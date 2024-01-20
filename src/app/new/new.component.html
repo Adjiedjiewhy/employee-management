@@ -2,7 +2,7 @@
   class="flex flex-col items-center justify-center p-6 bg-gradient-to-r from-purple-400 to-blue-400 flex-grow min-h-screen"
 >
   <div class="w-full max-w-2xl bg-white rounded-lg shadow-md">
-    <div class="p-6">
+    <form class="p-6" [formGroup]="employeeForm" (submit)="handleSubmit()">
       <div class="space-y-4">
         <div class="space-y-2">
           <label
@@ -12,8 +12,8 @@
             Username
           </label>
           <input
+            formControlName="username"
             class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            id="email"
             required=""
             type="email"
           />
@@ -27,8 +27,8 @@
               First Name
             </label>
             <input
+              formControlName="firstName"
               class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              id="name"
               required=""
             />
           </div>
@@ -40,8 +40,8 @@
               Last Name
             </label>
             <input
+              formControlName="lastName"
               class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              id="name"
               required=""
             />
           </div>
@@ -54,8 +54,9 @@
             E-mail
           </label>
           <input
+            formControlName="email"
+            type="email"
             class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            id="phone"
             required=""
           />
         </div>
@@ -67,8 +68,10 @@
             Birthdate
           </label>
           <input
+            formControlName="birthDate"
+            type="date"
+            [max]="maxDate"
             class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            id="department"
             required=""
           />
         </div>
@@ -80,8 +83,9 @@
             Basic Salary
           </label>
           <input
+            formControlName="basicSalary"
+            type="number"
             class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            id="position"
             required=""
           />
         </div>
@@ -94,6 +98,7 @@
               Status
             </label>
             <select
+              formControlName="status"
               class="w-full flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
               required=""
             >
@@ -111,6 +116,7 @@
               Group
             </label>
             <select
+              formControlName="group"
               class="w-full flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
               required=""
             >
@@ -138,14 +144,16 @@
             Description
           </label>
           <input
+            formControlName="description"
+            type="date"
             class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            id="position"
             required=""
           />
         </div>
       </div>
       <div class="flex">
         <button
+          type="submit"
           class="w-full h-full mx-1 rounded-md text-sm font-medium px-4 py-2 my-3 bg-black text-white flex items-center justify-center transition duration-300 ease-in-out hover:bg-blue-400"
         >
           Save
@@ -157,6 +165,6 @@
           Cancel
         </button>
       </div>
-    </div>
+    </form>
   </div>
 </main>

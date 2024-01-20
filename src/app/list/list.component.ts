@@ -24,6 +24,17 @@ export class ListComponent {
   constructor(private router: Router) {}
 
   ngOnInit() {
+    // EMPLOYEES.push({
+    //   firstName: 'Adjie',
+    //   lastName: 'Wahyu',
+    //   username: 'awwicaksono',
+    //   email: 'adjie.wahyuw@gmail.com',
+    //   birthDate: '1994-03-04T15:21:42.162Z',
+    //   basicSalary: 5091458.331,
+    //   status: 'Permanent',
+    //   group: 'Human Resource',
+    //   description: '2014-01-16T02:02:29.769Z',
+    // });
     this.handleChangeItemsPerPage();
   }
 
@@ -35,7 +46,7 @@ export class ListComponent {
   }
 
   handleChangeItemsPerPage() {
-    this.totalPages = EMPLOYEES.length / this.itemPerPage;
+    this.totalPages = Math.ceil(EMPLOYEES.length / this.itemPerPage);
     this.currentPage = 1;
     this.adjustTableData();
   }
