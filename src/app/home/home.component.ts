@@ -1,20 +1,27 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [ReactiveFormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
+  loginForm = this.formBuilder.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required]
+  });
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private formBuilder: FormBuilder) { }
 
   handleLogin(){
-    console.log("Do Login!")
-    this.router.navigateByUrl("/list")
+    if(this.loginForm.invalid){
+      return;
+    }
+    this.router.navigateByUrl("/list");
   }
 
   handleForgot(){
