@@ -1,0 +1,55 @@
+<header
+  class="w-full h-16 flex items-center bg-black bg-opacity-25 absolute top-0 z-10"
+>
+  <h1 class="text-3xl font-bold ml-4 text-white">Employee Management</h1>
+</header>
+<main>
+  <div
+    class="min-h-screen flex items-center justify-center bg-gradient-to-r from-purple-400 to-blue-400"
+  >
+    <div class="w-full max-w-md p-8 space-y-4 bg-white rounded shadow-md">
+      <h2 class="text-2xl font-bold text-center">Log in to your account</h2>
+      <form class="space-y-4">
+        <div class="space-y-2">
+          <label
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            for="username"
+          >
+            Username
+          </label>
+          <input
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            id="username"
+            placeholder="Enter username here"
+            required=""
+            type="text"
+          />
+        </div>
+        <div class="space-y-2">
+          <label
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            for="password"
+          >
+            Password
+          </label>
+          <input
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            id="password"
+            placeholder="Enter password here"
+            required=""
+            type="password"
+          />
+        </div>
+        <button
+          (click)="handleLogin()"
+          class="rounded-md text-sm font-medium px-4 py-2 w-full h-full bg-blue-400 text-white flex items-center justify-center transition duration-300 ease-in-out hover:bg-blue-700"
+        >
+          Log In
+        </button>
+      </form>
+      <div class="flex justify-between text-sm">
+        <a class="underline text-blue-500" (click)="handleForgotPassword()"> Forgot password? </a>
+      </div>
+    </div>
+  </div>
+</main>
