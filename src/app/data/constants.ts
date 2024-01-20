@@ -7,7 +7,7 @@ export const EMPLOYEES = [
     birthDate: '1988-06-26T21:33:34.680Z',
     basicSalary: 7075587.33,
     status: 'Permanent',
-    group: 'Human Resoursce',
+    group: 'Human Resource',
     description: '2020-06-28T20:08:22.977Z',
   },
   {
@@ -62,7 +62,7 @@ export const EMPLOYEES = [
     birthDate: '1982-06-10T11:11:23.853Z',
     basicSalary: 7064927.199,
     status: 'Permanent',
-    group: 'Human Resoursce',
+    group: 'Human Resource',
     description: '2017-02-09T05:49:46.883Z',
   },
   {
@@ -117,7 +117,7 @@ export const EMPLOYEES = [
     birthDate: '1994-04-20T02:36:47.411Z',
     basicSalary: 6001222.219,
     status: 'Outsource',
-    group: 'Human Resoursce',
+    group: 'Human Resource',
     description: '2008-05-27T17:29:43.471Z',
   },
   {
@@ -304,7 +304,7 @@ export const EMPLOYEES = [
     birthDate: '1994-03-04T15:21:42.162Z',
     basicSalary: 5091458.331,
     status: 'Permanent',
-    group: 'Human Resoursce',
+    group: 'Human Resource',
     description: '2014-01-16T02:02:29.769Z',
   },
   {
@@ -348,7 +348,7 @@ export const EMPLOYEES = [
     birthDate: '1997-11-27T15:29:37.873Z',
     basicSalary: 6304892.446,
     status: 'Outsource',
-    group: 'Human Resoursce',
+    group: 'Human Resource',
     description: '2004-12-07T08:31:56.614Z',
   },
   {
@@ -414,7 +414,7 @@ export const EMPLOYEES = [
     birthDate: '1985-06-19T23:46:44.957Z',
     basicSalary: 5548704.19,
     status: 'Permanent',
-    group: 'Human Resoursce',
+    group: 'Human Resource',
     description: '2003-12-25T21:52:29.100Z',
   },
   {
@@ -546,7 +546,7 @@ export const EMPLOYEES = [
     birthDate: '1998-04-18T05:13:51.267Z',
     basicSalary: 6456897.633,
     status: 'Outsource',
-    group: 'Human Resoursce',
+    group: 'Human Resource',
     description: '2020-08-18T11:17:22.710Z',
   },
   {
@@ -612,7 +612,7 @@ export const EMPLOYEES = [
     birthDate: '1981-01-24T07:28:22.952Z',
     basicSalary: 7483842.482,
     status: 'Permanent',
-    group: 'Human Resoursce',
+    group: 'Human Resource',
     description: '2020-06-17T07:28:01.546Z',
   },
   {
@@ -854,7 +854,7 @@ export const EMPLOYEES = [
     birthDate: '1999-03-06T06:12:01.548Z',
     basicSalary: 6422367.603,
     status: 'Outsource',
-    group: 'Human Resoursce',
+    group: 'Human Resource',
     description: '2023-01-16T14:43:10.551Z',
   },
   {
@@ -876,7 +876,7 @@ export const EMPLOYEES = [
     birthDate: '1997-03-18T15:32:22.350Z',
     basicSalary: 5172619.385,
     status: 'Outsource',
-    group: 'Human Resoursce',
+    group: 'Human Resource',
     description: '2002-09-01T07:29:07.959Z',
   },
   {
@@ -942,7 +942,7 @@ export const EMPLOYEES = [
     birthDate: '1995-08-06T07:45:43.132Z',
     basicSalary: 6822452.838,
     status: 'Contract',
-    group: 'Human Resoursce',
+    group: 'Human Resource',
     description: '2019-02-19T18:45:37.315Z',
   },
   {
@@ -1030,7 +1030,7 @@ export const EMPLOYEES = [
     birthDate: '1997-09-18T01:31:37.753Z',
     basicSalary: 6969391.004,
     status: 'Contract',
-    group: 'Human Resoursce',
+    group: 'Human Resource',
     description: '2023-08-06T09:33:55.468Z',
   },
   {

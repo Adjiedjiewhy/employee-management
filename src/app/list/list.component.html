@@ -1,15 +1,76 @@
-<div class="bg-gray-200 min-h-screen flex items-center justify-center">
-  <div class="bg-white p-8 rounded-lg shadow-md max-w-full overflow-x-auto">
+<div
+  class="bg-gradient-to-r from-purple-400 to-blue-400 min-h-screen flex items-center justify-center"
+>
+  <div
+    class="bg-white p-8 shadow-md overflow-x-auto min-h-screen sm:max-w-full md:w-4/5 lg:w-4/5 xl:w-5/6"
+  >
     <input
       class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-      id="username"
-      placeholder="Search"
-      required=""
+      placeholder="Search employee"
       type="text"
+      (change)="handleSearch()"
+      [(ngModel)]="searchQuery"
     />
+    <div class="flex items-center mt-4">
+      <div>
+        <label class="mr-2">Status</label>
+        <select (change)="handleStatusFilter()" [(ngModel)]="statusSelect">
+          <option value="">Any</option>
+          <option value="permanent">Permanent</option>
+          <option value="contract">Contract</option>
+          <option value="outsource">Outsource</option>
+        </select>
+      </div>
+      <div>
+        <label class="mr-2">Group</label>
+        <select (change)="handleGroupFilter()" [(ngModel)]="groupSelect">
+          <option value="">Any</option>
+          <option value="business">Business</option>
+          <option value="human resource">Human Resource</option>
+          <option value="information technology">Information Technology</option>
+          <option value="operations">Operations</option>
+          <option value="sales">Sales</option>
+          <option value="security">Security</option>
+          <option value="legal">Legal</option>
+          <option value="risk">Risk</option>
+          <option value="finance">Finance</option>
+          <option value="support">Support</option>
+        </select>
+      </div>
+    </div>
+    <div class="flex items-center justify-between mt-4">
+      <div>
+        <button
+          (click)="handlePrevPage()"
+          class="rounded-md text-sm font-medium px-4 py-2 bg-black text-white items-center justify-center transition duration-300 ease-in-out hover:bg-blue-400"
+        >
+          Prev
+        </button>
+
+        <span class="mx-2"> Page {{ currentPage }} of {{ totalPages }} </span>
+
+        <button
+          (click)="handleNextPage()"
+          class="rounded-md text-sm font-medium px-4 py-2 bg-black text-white items-center justify-center transition duration-300 ease-in-out hover:bg-blue-400"
+        >
+          Next
+        </button>
+      </div>
+
+      <div>
+        <label class="mr-2">Items per page:</label>
+        <select [(ngModel)]="itemPerPage" (change)="handleChangeItemsPerPage()">
+          <option value="5">5</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="25">25</option>
+        </select>
+      </div>
+    </div>
     <table class="w-full table-auto">
       <thead>
         <tr>
+          <th class="px-4 py-2">No.</th>
           <th class="px-4 py-2">Username</th>
           <th class="px-4 py-2">Full Name</th>
           <th class="px-4 py-2">E-mail</th>
@@ -21,18 +82,34 @@
         </tr>
       </thead>
       <tbody>
-        @for (employee of employees; track employee.username; let index = $index){
+        @for (employee of employees; track employee.username; let index =
+        $index){
         <tr>
+          <td class="border px-4 py-2">
+            {{ index + 1 + (currentPage - 1) * itemPerPage }}
+          </td>
           <td class="border px-4 py-2">{{ employee.username }}</td>
           <td class="border px-4 py-2">
             {{ employee.firstName }} {{ employee.lastName }}
           </td>
           <td class="border px-4 py-2">{{ employee.email }}</td>
           <td class="border px-4 py-2">{{ employee.birthDate | date }}</td>
-          <td class="border px-4 py-2">{{ employee.basicSalary }}</td>
+          <td class="border px-4 py-2">{{ employee.basicSalary | currency:'IDR':'symbol-narrow' }}</td>
           <td class="border px-4 py-2">{{ employee.status }}</td>
           <td class="border px-4 py-2">{{ employee.group }}</td>
           <td class="border px-4 py-2">{{ employee.description | date }}</td>
+        </tr>
+        } @empty {
+        <tr>
+          <td class="border px-4 py-2">1</td>
+          <td class="border px-4 py-2">No Data</td>
+          <td class="border px-4 py-2">No Data</td>
+          <td class="border px-4 py-2">No Data</td>
+          <td class="border px-4 py-2">No Data</td>
+          <td class="border px-4 py-2">No Data</td>
+          <td class="border px-4 py-2">No Data</td>
+          <td class="border px-4 py-2">No Data</td>
+          <td class="border px-4 py-2">No Data</td>
         </tr>
         }
       </tbody>
