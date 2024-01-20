@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { EMPLOYEES } from '../data/constants';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-list',
@@ -11,7 +12,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './list.component.css',
 })
 export class ListComponent {
-  employees: any;
+  employees = EMPLOYEES;
   itemPerPage = 10;
   currentPage = 0;
   totalPages = 0;
@@ -19,6 +20,8 @@ export class ListComponent {
   searchQuery = '';
   statusSelect = 'any';
   groupSelect = 'any';
+
+  constructor(private router: Router) {}
 
   ngOnInit() {
     this.handleChangeItemsPerPage();
@@ -39,32 +42,28 @@ export class ListComponent {
 
   handleSearch() {
     console.log('Search:', this.searchQuery);
-    this.employees = EMPLOYEES.filter(employee => {
-      return Object.values(employee).some(value => String(value).toLowerCase().includes(this.searchQuery));
+    this.employees = EMPLOYEES.filter((employee) => {
+      return Object.values(employee).some((value) =>
+        String(value).toLowerCase().includes(this.searchQuery)
+      );
     });
   }
 
   handleStatusFilter() {
     console.log('Status:', this.statusSelect);
     this.employees = EMPLOYEES.filter((employee) => {
-      return (
-        employee.status.toLowerCase() === this.statusSelect
-      );
+      return employee.status.toLowerCase() === this.statusSelect;
     });
   }
 
   handleGroupFilter() {
     console.log('Group:', this.groupSelect);
     this.employees = EMPLOYEES.filter((employee) => {
-      return (
-        employee.group.toLowerCase() === this.groupSelect
-      );
+      return employee.group.toLowerCase() === this.groupSelect;
     });
   }
 
-  searchData() {
-
-  }
+  searchData() {}
 
   handleNextPage() {
     if (this.currentPage === this.totalPages) return;
@@ -80,7 +79,19 @@ export class ListComponent {
     this.adjustTableData();
   }
 
-  handleGoToDetails() {}
+  handleGoToDetails(employeeData: object) {    
+    this.router.navigateByUrl('/details', { state: { employeeData: employeeData } });
+  }
 
-  handleGoToNewEmployee() {}
+  handleGoToNewEmployee() {
+    console.log('New Employee');
+  }
+
+  handleEdit() {
+    console.log('Do Edit');
+  }
+
+  handleDelete() {
+    console.log('Do Delete');
+  }
 }

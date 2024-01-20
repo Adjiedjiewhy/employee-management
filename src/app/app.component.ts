@@ -9,9 +9,7 @@ import { RouterModule } from '@angular/router';
   standalone: true,
   imports: [RouterOutlet, HomeComponent, DetailsComponent],
   template: `
-    <header
-      class="w-full h-16 flex items-center bg-black top-0 z-10"
-    >
+    <header class="w-full h-16 flex items-center bg-black top-0 z-10 fixed">
       <h1 class="text-3xl font-bold ml-4 text-white">Employee Management</h1>
     </header>
     <main>

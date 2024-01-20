@@ -1,12 +1,25 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './details.component.html',
-  styleUrl: './details.component.css'
+  styleUrl: './details.component.css',
 })
 export class DetailsComponent {
+  employee: any;
 
+  constructor(private router: Router) {}
+
+  ngOnInit() {
+    this.employee = history.state.employeeData;
+    console.log(this.employee);
+  }
+
+  handleBack() {
+    this.router.navigateByUrl('/list');
+  }
 }

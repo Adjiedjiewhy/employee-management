@@ -1,24 +1,70 @@
-<p>details works!</p>
-<div class="relative inline-block text-left">
-  <select
-    class="block appearance-none w-full bg-white border border-gray-300 hover:border-gray-500 px-4 py-2 rounded shadow leading-tight focus:outline-none focus:shadow-outline"
-  >
-    <option value="" disabled selected>Select an option</option>
-    <option value="option1">Option 1</option>
-    <option value="option2">Option 2</option>
-    <option value="option3">Option 3</option>
-  </select>
-  <div
-    class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700"
-  >
-    <svg
-      class="fill-current h-4 w-4"
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 20 20"
-    >
-      <path
-        d="M10 12l-1.41 1.41L12.17 15H2v2h10.17l-3.58 3.59L10 20l7-7-7-7z"
-      />
-    </svg>
+<main
+  class="flex flex-col items-center justify-center p-6 bg-gradient-to-r from-purple-400 to-blue-400 flex-grow min-h-screen"
+>
+  <div class="w-full max-w-2xl bg-white rounded-lg shadow-md">
+    <div class="p-6">
+      <h2 class="text-2xl font-semibold text-black">
+        {{ employee.firstName }} {{ employee.lastName }}
+      </h2>
+      <p class="text-sm text-black">
+        {{ employee.group }} - {{ employee.status }}
+      </p>
+      <div class="flex items-center mt-4 text-black">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="h-5 w-5"
+        >
+          <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+          <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+        </svg>
+        <p class="px-2 text-sm">{{ employee.email }}</p>
+      </div>
+      <div class="mt-5 text-black">
+        <h3 class="text-lg font-semibold">Username</h3>
+        <ul class="mt-2 text-sm space-y-1">
+          {{
+            employee.username
+          }}
+        </ul>
+      </div>
+      <div class="mt-5 text-black">
+        <h3 class="text-lg font-semibold">Birthdate</h3>
+        <ul class="mt-2 text-sm space-y-1">
+          {{
+            employee.birthDate | date
+          }}
+        </ul>
+      </div>
+      <div class="mt-5 text-black">
+        <h3 class="text-lg font-semibold">Salary</h3>
+        <ul class="mt-2 text-sm space-y-2">
+          {{
+            employee.basicSalary | currency : "IDR" : "symbol-narrow"
+          }}
+        </ul>
+      </div>
+      <div class="mt-5 text-black">
+        <h3 class="text-lg font-semibold">Description</h3>
+        <ul class="mt-2 text-sm space-y-2">
+          {{
+            employee.description | date
+          }}
+        </ul>
+      </div>
+      <button
+        (click)="handleBack()"
+        class="rounded-md text-sm font-medium px-4 py-2 my-3 w-full h-full bg-black text-white flex items-center justify-center transition duration-300 ease-in-out hover:bg-blue-400"
+      >
+        OK
+      </button>
+    </div>
   </div>
-</div>
+</main>
