@@ -1,85 +1,162 @@
-<div class="mx-auto max-w-lg space-y-6">
-    <div class="space-y-2 text-center">
-      <h1 class="text-3xl font-bold">Add New Employee</h1>
-      <p class="text-gray-500 dark:text-gray-400">Enter the employee's information to add them to the system</p>
-    </div>
-    <div class="space-y-4">
-      <div class="space-y-2">
-        <label
-          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          for="name"
-        >
-          Name
-        </label>
-        <input
-          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          id="name"
-          placeholder="John Doe"
-          required=""
-        />
+<main
+  class="flex flex-col items-center justify-center p-6 bg-gradient-to-r from-purple-400 to-blue-400 flex-grow min-h-screen"
+>
+  <div class="w-full max-w-2xl bg-white rounded-lg shadow-md">
+    <div class="p-6">
+      <div class="space-y-4">
+        <div class="space-y-2">
+          <label
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            for="email"
+          >
+            Username
+          </label>
+          <input
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            id="email"
+            required=""
+            type="email"
+          />
+        </div>
+        <div class="flex">
+          <div class="w-full">
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="name"
+            >
+              First Name
+            </label>
+            <input
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              id="name"
+              required=""
+            />
+          </div>
+          <div class="ml-4 w-full">
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="name"
+            >
+              Last Name
+            </label>
+            <input
+              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              id="name"
+              required=""
+            />
+          </div>
+        </div>
+        <div class="space-y-2">
+          <label
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            for="phone"
+          >
+            E-mail
+          </label>
+          <input
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            id="phone"
+            required=""
+          />
+        </div>
+        <div class="space-y-2">
+          <label
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            for="department"
+          >
+            Birthdate
+          </label>
+          <input
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            id="department"
+            required=""
+          />
+        </div>
+        <div class="space-y-2">
+          <label
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            for="position"
+          >
+            Basic Salary
+          </label>
+          <input
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            id="position"
+            required=""
+          />
+        </div>
+        <div class="flex">
+          <div class="w-full">
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="name"
+            >
+              Status
+            </label>
+            <select
+              class="w-full flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              required=""
+            >
+              <option value="" disabled selected>Select an option</option>
+              <option value="permanent">Permanent</option>
+              <option value="contract">Contract</option>
+              <option value="outsource">Outsource</option>
+            </select>
+          </div>
+          <div class="ml-4 w-full">
+            <label
+              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+              for="name"
+            >
+              Group
+            </label>
+            <select
+              class="w-full flex h-10 rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+              required=""
+            >
+              <option value="" disabled selected>Select an option</option>
+              <option value="business">Business</option>
+              <option value="human resource">Human Resource</option>
+              <option value="information technology">
+                Information Technology
+              </option>
+              <option value="operations">Operations</option>
+              <option value="sales">Sales</option>
+              <option value="security">Security</option>
+              <option value="legal">Legal</option>
+              <option value="risk">Risk</option>
+              <option value="finance">Finance</option>
+              <option value="support">Support</option>
+            </select>
+          </div>
+        </div>
+        <div class="space-y-2">
+          <label
+            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+            for="position"
+          >
+            Description
+          </label>
+          <input
+            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+            id="position"
+            required=""
+          />
+        </div>
       </div>
-      <div class="space-y-2">
-        <label
-          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          for="email"
+      <div class="flex">
+        <button
+          class="w-full h-full mx-1 rounded-md text-sm font-medium px-4 py-2 my-3 bg-black text-white flex items-center justify-center transition duration-300 ease-in-out hover:bg-blue-400"
         >
-          Email
-        </label>
-        <input
-          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          id="email"
-          placeholder="johndoe@example.com"
-          required=""
-          type="email"
-        />
-      </div>
-      <div class="space-y-2">
-        <label
-          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          for="phone"
+          Save
+        </button>
+        <button
+          (click)="handleBack()"
+          class="w-full h-full mx-1 rounded-md text-sm font-medium px-4 py-2 my-3 bg-black text-white flex items-center justify-center transition duration-300 ease-in-out hover:bg-red-400"
         >
-          Phone Number
-        </label>
-        <input
-          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          id="phone"
-          placeholder="123-456-7890"
-          required=""
-        />
+          Cancel
+        </button>
       </div>
-      <div class="space-y-2">
-        <label
-          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          for="department"
-        >
-          Department
-        </label>
-        <input
-          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          id="department"
-          placeholder="Sales"
-          required=""
-        />
-      </div>
-      <div class="space-y-2">
-        <label
-          class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-          for="position"
-        >
-          Position
-        </label>
-        <input
-          class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-          id="position"
-          placeholder="Sales Manager"
-          required=""
-        />
-      </div>
-      <button
-        class="inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 w-full"
-        type="submit"
-      >
-        Submit
-      </button>
     </div>
   </div>
+</main>

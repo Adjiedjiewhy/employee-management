@@ -18,8 +18,8 @@ export class ListComponent {
   totalPages = 0;
 
   searchQuery = '';
-  statusSelect = 'any';
-  groupSelect = 'any';
+  statusSelect = '';
+  groupSelect = '';
 
   constructor(private router: Router) {}
 
@@ -84,7 +84,7 @@ export class ListComponent {
   }
 
   handleGoToNewEmployee() {
-    console.log('New Employee');
+    this.router.navigateByUrl('/new');
   }
 
   handleEdit() {
