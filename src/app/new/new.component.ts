@@ -56,8 +56,8 @@ export class NewComponent {
     this.newEmployee.basicSalary = parseInt(
       this.employeeForm.value.basicSalary!
     );
-    this.newEmployee.status = this.employeeForm.value.username!;
-    this.newEmployee.group = this.employeeForm.value.username!;
+    this.newEmployee.status = this.employeeForm.value.status!;
+    this.newEmployee.group = this.employeeForm.value.group!;
     this.newEmployee.description = new Date(
       this.employeeForm.value.birthDate as Date
     )
