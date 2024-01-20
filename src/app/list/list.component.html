@@ -1,16 +1,41 @@
-<h1>Employee Dashboard</h1>
-
-<table>
-    <thead>
+<div class="bg-gray-200 min-h-screen flex items-center justify-center">
+  <div class="bg-white p-8 rounded-lg shadow-md max-w-full overflow-x-auto">
+    <input
+      class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+      id="username"
+      placeholder="Search"
+      required=""
+      type="text"
+    />
+    <table class="w-full table-auto">
+      <thead>
         <tr>
-            <th>Username</th>
-            <th>Full Name</th>
-            <th>E-mail</th>
-            <th>Birthdate</th>
-            <th>Salary</th>
-            <th>Status</th>
-            <th>Group</th>
-            <th>Description</th>
+          <th class="px-4 py-2">Username</th>
+          <th class="px-4 py-2">Full Name</th>
+          <th class="px-4 py-2">E-mail</th>
+          <th class="px-4 py-2">Birthdate</th>
+          <th class="px-4 py-2">Salary</th>
+          <th class="px-4 py-2">Status</th>
+          <th class="px-4 py-2">Group</th>
+          <th class="px-4 py-2">Description</th>
         </tr>
-    </thead>
-</table>
+      </thead>
+      <tbody>
+        @for (employee of employees; track employee.username; let index = $index){
+        <tr>
+          <td class="border px-4 py-2">{{ employee.username }}</td>
+          <td class="border px-4 py-2">
+            {{ employee.firstName }} {{ employee.lastName }}
+          </td>
+          <td class="border px-4 py-2">{{ employee.email }}</td>
+          <td class="border px-4 py-2">{{ employee.birthDate | date }}</td>
+          <td class="border px-4 py-2">{{ employee.basicSalary }}</td>
+          <td class="border px-4 py-2">{{ employee.status }}</td>
+          <td class="border px-4 py-2">{{ employee.group }}</td>
+          <td class="border px-4 py-2">{{ employee.description | date }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+</div>
