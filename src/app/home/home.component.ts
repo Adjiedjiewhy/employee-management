@@ -14,7 +14,7 @@ export class HomeComponent {
 
   handleLogin(){
     console.log("Do Login!")
-    this.router.navigate([{ outlets: { outletName: ['details'] } }]);
+    this.router.navigateByUrl("/list")
   }
 
   handleForgot(){
