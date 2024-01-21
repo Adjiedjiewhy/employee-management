@@ -42,8 +42,6 @@ export class NewComponent {
   }
 
   handleSubmit() {
-    console.log('submit!');
-
     this.newEmployee.username = this.employeeForm.value.username!;
     this.newEmployee.firstName = this.employeeForm.value.firstName!;
     this.newEmployee.lastName = this.employeeForm.value.lastName!;

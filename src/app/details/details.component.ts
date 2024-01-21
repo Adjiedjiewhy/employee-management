@@ -16,10 +16,13 @@ export class DetailsComponent {
 
   ngOnInit() {
     this.employee = history.state.employeeData;
-    console.log(this.employee);
   }
 
   handleBack() {
-    this.router.navigateByUrl('/list');
+    this.router.navigateByUrl('/list', {
+      state: {
+        filters: history.state.filters,
+      },
+    });
   }
 }

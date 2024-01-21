@@ -25,6 +25,10 @@ export class ListComponent {
   constructor(private router: Router) {}
 
   ngOnInit() {
+    this.searchQuery = history.state.filters[0]
+    this.statusSelect = history.state.filters[1]
+    this.groupSelect = history.state.filters[2]
+
     this.handleChangeItemsPerPage();
   }
 
@@ -38,7 +42,6 @@ export class ListComponent {
     this.currentPage = 1;
     let tempData = EMPLOYEES;
     if (this.searchQuery || this.statusSelect || this.groupSelect) {
-      console.log('FILTER!');
       if (this.searchQuery) {
         tempData = this.handleSearch(tempData);
       }
@@ -48,7 +51,6 @@ export class ListComponent {
       if (this.groupSelect && this.groupSelect !== 'any') {
         tempData = this.handleGroupFilter(tempData);
       }
-      console.log('TD:', tempData);
       this.employees = tempData;
     } else {
       this.employees = EMPLOYEES;
@@ -105,7 +107,10 @@ export class ListComponent {
 
   handleGoToDetails(employeeData: object) {
     this.router.navigateByUrl('/details', {
-      state: { employeeData: employeeData },
+      state: {
+        employeeData: employeeData,
+        filters: [this.searchQuery, this.statusSelect, this.groupSelect],
+      },
     });
   }
 
