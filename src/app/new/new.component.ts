@@ -1,7 +1,13 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  Validators,
+  ReactiveFormsModule,
+  FormControl,
+} from '@angular/forms';
 import { EMPLOYEES } from '../data/constants';
 
 @Component({
@@ -12,16 +18,23 @@ import { EMPLOYEES } from '../data/constants';
   styleUrl: './new.component.css',
 })
 export class NewComponent {
+  regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  isModalVisible = false;
+  modalMsg = {
+    title: 'Default Title',
+    message: 'Default Message',
+  };
+
   employeeForm = this.formBuilder.group({
     username: ['', Validators.required],
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     email: ['', Validators.required],
-    birthDate: [new Date, Validators.required],
+    birthDate: [new Date(), Validators.required],
     basicSalary: ['', Validators.required],
     status: ['', Validators.required],
     group: ['', Validators.required],
-    description: [new Date, Validators.required],
+    description: [new Date(), Validators.required],
   });
 
   newEmployee = {
@@ -43,8 +56,14 @@ export class NewComponent {
   }
 
   handleSubmit() {
-    if(this.employeeForm.invalid){
-      console.log("Invalid!")
+    if (this.employeeForm.invalid) {
+      console.log('Invalid!');
+      this.handleNoData();
+      return;
+    }
+    if(!this.regex.test(this.employeeForm.value.email!)){
+      console.log('Invalid!');
+      this.handleInvalidEmail();
       return;
     }
 
@@ -69,9 +88,33 @@ export class NewComponent {
       .toString();
 
     EMPLOYEES.push(this.newEmployee);
+    this.handleSuccess();
   }
 
   handleBack() {
     this.router.navigateByUrl('/list');
+  }
+
+  handleSuccess(){
+    this.isModalVisible = true;
+    this.modalMsg.title = 'Success';
+    this.modalMsg.message = 'New employee data has been added to the database!';
+    this.employeeForm.reset();
+  }
+
+  handleNoData() {
+    this.isModalVisible = true;
+    this.modalMsg.title = 'Missing Information';
+    this.modalMsg.message = 'Please fill out all the inputs!';
+  }
+
+  handleInvalidEmail() {
+    this.isModalVisible = true;
+    this.modalMsg.title = 'Invalid E-mail';
+    this.modalMsg.message = 'Please input a valid email address!';
+  }
+
+  toggleModalOff() {
+    this.isModalVisible = false;
   }
 }
