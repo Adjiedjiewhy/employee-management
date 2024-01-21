@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class ListComponent {
   employees = EMPLOYEES;
+  currentPageData: any;
   itemPerPage = 10;
   currentPage = 0;
   totalPages = 0;
@@ -24,25 +25,7 @@ export class ListComponent {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    // EMPLOYEES.push({
-    //   firstName: 'Adjie',
-    //   lastName: 'Wahyu',
-    //   username: 'awwicaksono',
-    //   email: 'adjie.wahyuw@gmail.com',
-    //   birthDate: '1994-03-04T15:21:42.162Z',
-    //   basicSalary: 5091458.331,
-    //   status: 'Permanent',
-    //   group: 'Human Resource',
-    //   description: '2014-01-16T02:02:29.769Z',
-    // });
     this.handleChangeItemsPerPage();
-  }
-
-  adjustTableData() {
-    this.employees = EMPLOYEES.slice(
-      this.itemPerPage * this.currentPage - this.itemPerPage,
-      this.itemPerPage * this.currentPage
-    );
   }
 
   handleChangeItemsPerPage() {
@@ -51,47 +34,76 @@ export class ListComponent {
     this.adjustTableData();
   }
 
-  handleSearch() {
-    console.log('Search:', this.searchQuery);
-    this.employees = EMPLOYEES.filter((employee) => {
+  adjustTableData() {
+    let tempData = EMPLOYEES;
+    if (this.searchQuery || this.statusSelect || this.groupSelect) {
+      console.log('FILTER!');
+      if (this.searchQuery) {
+        tempData = this.handleSearch(tempData);
+      }
+      if (this.statusSelect && this.statusSelect !== 'any') {
+        tempData = this.handleStatusFilter(tempData);
+      }
+      if (this.groupSelect && this.groupSelect !== 'any') {
+        tempData = this.handleGroupFilter(tempData);
+      }
+      console.log('TD:', tempData);
+      this.employees = tempData;
+    } else {
+      this.employees = EMPLOYEES;
+    }
+
+    this.currentPageData = this.employees;
+    this.adjustPagination();
+  }
+
+  adjustPagination() {
+    this.totalPages = Math.ceil(this.employees.length / this.itemPerPage);
+  }
+
+  handleSearch(tempData: any) {
+    return tempData.filter((employee: any) => {
       return Object.values(employee).some((value) =>
         String(value).toLowerCase().includes(this.searchQuery)
       );
     });
   }
 
-  handleStatusFilter() {
-    console.log('Status:', this.statusSelect);
-    this.employees = EMPLOYEES.filter((employee) => {
+  handleStatusFilter(tempData: any) {
+    return tempData.filter((employee: any) => {
       return employee.status.toLowerCase() === this.statusSelect;
     });
   }
 
-  handleGroupFilter() {
-    console.log('Group:', this.groupSelect);
-    this.employees = EMPLOYEES.filter((employee) => {
+  handleGroupFilter(tempData: any) {
+    return tempData.filter((employee: any) => {
       return employee.group.toLowerCase() === this.groupSelect;
     });
   }
-
-  searchData() {}
 
   handleNextPage() {
     if (this.currentPage === this.totalPages) return;
 
     this.currentPage++;
-    this.adjustTableData();
   }
 
   handlePrevPage() {
     if (this.currentPage === 1) return;
 
     this.currentPage--;
-    this.adjustTableData();
   }
 
-  handleGoToDetails(employeeData: object) {    
-    this.router.navigateByUrl('/details', { state: { employeeData: employeeData } });
+  handleChangePage() {
+    this.currentPageData = this.employees.slice(
+      this.itemPerPage * this.currentPage - this.itemPerPage,
+      this.itemPerPage * this.currentPage
+    );
+  }
+
+  handleGoToDetails(employeeData: object) {
+    this.router.navigateByUrl('/details', {
+      state: { employeeData: employeeData },
+    });
   }
 
   handleGoToNewEmployee() {

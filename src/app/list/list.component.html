@@ -8,13 +8,13 @@
       class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
       placeholder="Search employee"
       type="text"
-      (change)="handleSearch()"
+      (change)="adjustTableData()"
       [(ngModel)]="searchQuery"
     />
     <div class="flex items-center mt-4 justify-between">
       <div>
         <label class="mr-2">Status</label>
-        <select (change)="handleStatusFilter()" [(ngModel)]="statusSelect">
+        <select (change)="adjustTableData()" [(ngModel)]="statusSelect">
           <option value="" disabled selected>Select an option</option>
           <option value="any">Any</option>
           <option value="permanent">Permanent</option>
@@ -22,7 +22,7 @@
           <option value="outsource">Outsource</option>
         </select>
         <label class="mr-2 mx-4">Group</label>
-        <select (change)="handleGroupFilter()" [(ngModel)]="groupSelect">
+        <select (change)="adjustTableData()" [(ngModel)]="groupSelect">
           <option value="" disabled selected>Select an option</option>
           <option value="any">Any</option>
           <option value="business">Business</option>
