@@ -18,8 +18,8 @@ Package                      Version
 @schematics/angular          17.1.0 (cli-only)
 
 [Installation Process]
->Download or clone repository from Github
->Make sure the environment matches with the one detailed above
->Within the project, run "npm install"
->Wait for the download to finish
->run the command "ng serve" to run the server
+-Download or clone repository from Github
+-Make sure the environment matches with the one detailed above
+-Within the project, run "npm install"
+-Wait for the download to finish
+-run the command "ng serve" to run the server
