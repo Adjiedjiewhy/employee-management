@@ -25,9 +25,11 @@ export class ListComponent {
   constructor(private router: Router) {}
 
   ngOnInit() {
-    this.searchQuery = history.state.filters[0]
-    this.statusSelect = history.state.filters[1]
-    this.groupSelect = history.state.filters[2]
+    if (history.state.filters !== undefined) {
+      this.searchQuery = history.state.filters[0];
+      this.statusSelect = history.state.filters[1];
+      this.groupSelect = history.state.filters[2];
+    }
 
     this.handleChangeItemsPerPage();
   }

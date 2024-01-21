@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ReactiveFormsModule, FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { EMPLOYEES } from '../data/constants';
 
 @Component({
@@ -12,17 +12,18 @@ import { EMPLOYEES } from '../data/constants';
   styleUrl: './new.component.css',
 })
 export class NewComponent {
-  employeeForm = new FormGroup({
-    firstName: new FormControl(''),
-    lastName: new FormControl(''),
-    username: new FormControl(''),
-    email: new FormControl(''),
-    birthDate: new FormControl(new Date()),
-    basicSalary: new FormControl(''),
-    status: new FormControl(''),
-    group: new FormControl(''),
-    description: new FormControl(new Date()),
+  employeeForm = this.formBuilder.group({
+    username: ['', Validators.required],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    email: ['', Validators.required],
+    birthDate: [new Date, Validators.required],
+    basicSalary: ['', Validators.required],
+    status: ['', Validators.required],
+    group: ['', Validators.required],
+    description: [new Date, Validators.required],
   });
+
   newEmployee = {
     firstName: '',
     lastName: '',
@@ -36,12 +37,17 @@ export class NewComponent {
   };
   maxDate?: string;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private formBuilder: FormBuilder) {
     const today = new Date();
     this.maxDate = today.toISOString().split('T')[0];
   }
 
   handleSubmit() {
+    if(this.employeeForm.invalid){
+      console.log("Invalid!")
+      return;
+    }
+
     this.newEmployee.username = this.employeeForm.value.username!;
     this.newEmployee.firstName = this.employeeForm.value.firstName!;
     this.newEmployee.lastName = this.employeeForm.value.lastName!;
@@ -57,7 +63,7 @@ export class NewComponent {
     this.newEmployee.status = this.employeeForm.value.status!;
     this.newEmployee.group = this.employeeForm.value.group!;
     this.newEmployee.description = new Date(
-      this.employeeForm.value.birthDate as Date
+      this.employeeForm.value.description as Date
     )
       .toISOString()
       .toString();
