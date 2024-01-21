@@ -35,6 +35,7 @@ export class ListComponent {
   }
 
   adjustTableData() {
+    this.currentPage = 1;
     let tempData = EMPLOYEES;
     if (this.searchQuery || this.statusSelect || this.groupSelect) {
       console.log('FILTER!');
@@ -53,8 +54,8 @@ export class ListComponent {
       this.employees = EMPLOYEES;
     }
 
-    this.currentPageData = this.employees;
     this.adjustPagination();
+    this.handlePageData();
   }
 
   adjustPagination() {
@@ -85,15 +86,17 @@ export class ListComponent {
     if (this.currentPage === this.totalPages) return;
 
     this.currentPage++;
+    this.handlePageData();
   }
 
   handlePrevPage() {
     if (this.currentPage === 1) return;
 
     this.currentPage--;
+    this.handlePageData();
   }
 
-  handleChangePage() {
+  handlePageData() {
     this.currentPageData = this.employees.slice(
       this.itemPerPage * this.currentPage - this.itemPerPage,
       this.itemPerPage * this.currentPage

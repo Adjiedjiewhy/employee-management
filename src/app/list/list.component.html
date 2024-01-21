@@ -88,7 +88,7 @@
         </tr>
       </thead>
       <tbody>
-        @for (employee of employees; track employee.username; let index =
+        @for (employee of currentPageData; track employee.username; let index =
         $index){
         <tr>
           <td class="border px-4 py-2">
