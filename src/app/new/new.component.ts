@@ -18,7 +18,7 @@ import { EMPLOYEES } from '../data/constants';
   styleUrl: './new.component.css',
 })
 export class NewComponent {
-  regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  validEmailFormat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   isModalVisible = false;
   modalMsg = {
     title: 'Default Title',
@@ -61,7 +61,7 @@ export class NewComponent {
       this.handleNoData();
       return;
     }
-    if(!this.regex.test(this.employeeForm.value.email!)){
+    if(!this.validEmailFormat.test(this.employeeForm.value.email!)){
       console.log('Invalid!');
       this.handleInvalidEmail();
       return;

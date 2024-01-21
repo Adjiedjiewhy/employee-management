@@ -12,6 +12,13 @@ import { Router } from '@angular/router';
   styleUrl: './list.component.css',
 })
 export class ListComponent {
+  isModalVisible = false;
+  isAction = true;
+  modalMsg = {
+    title: 'Default Title',
+    message: 'Default Message',
+  };
+
   employees = EMPLOYEES;
   currentPageData: any;
   itemPerPage = 10;
@@ -122,9 +129,21 @@ export class ListComponent {
 
   handleEdit() {
     console.log('Do Edit');
+    this.isModalVisible = true;
+    this.isAction = true;
+    this.modalMsg.title = 'Editing Employee Data';
+    this.modalMsg.message = 'Currently editing employee details!';
   }
 
   handleDelete() {
     console.log('Do Delete');
+    this.isModalVisible = true;
+    this.isAction = false;
+    this.modalMsg.title = 'Deleting Employee Data';
+    this.modalMsg.message = 'Employee deletion in progress!';
+  }
+
+  toggleModalOff() {
+    this.isModalVisible = false;
   }
 }
