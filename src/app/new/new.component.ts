@@ -9,6 +9,8 @@ import {
   FormControl,
 } from '@angular/forms';
 import { EMPLOYEES } from '../data/constants';
+import { ModalMessage, NewEmployeeData } from '../data/types';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-new',
@@ -20,9 +22,9 @@ import { EMPLOYEES } from '../data/constants';
 export class NewComponent {
   validEmailFormat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   isModalVisible = false;
-  modalMsg = {
-    title: 'Default Title',
-    message: 'Default Message',
+  modalMsg: ModalMessage = {
+    title: "",
+    message: ""
   };
 
   employeeForm = this.formBuilder.group({
@@ -37,17 +39,17 @@ export class NewComponent {
     description: [new Date(), Validators.required],
   });
 
-  newEmployee = {
+  newEmployee: NewEmployeeData = {
     firstName: '',
     lastName: '',
     username: '',
     email: '',
-    birthDate: '',
+    birthDate: new Date(),
     basicSalary: 0,
     status: '',
     group: '',
-    description: '',
-  };
+    description: new Date(),
+  }
   maxDate?: string;
 
   constructor(private router: Router, private formBuilder: FormBuilder) {
@@ -67,26 +69,21 @@ export class NewComponent {
       return;
     }
 
-    this.newEmployee.username = this.employeeForm.value.username!;
-    this.newEmployee.firstName = this.employeeForm.value.firstName!;
-    this.newEmployee.lastName = this.employeeForm.value.lastName!;
-    this.newEmployee.email = this.employeeForm.value.email!;
-    this.newEmployee.birthDate = new Date(
-      this.employeeForm.value.birthDate as Date
-    )
-      .toISOString()
-      .toString();
-    this.newEmployee.basicSalary = parseInt(
-      this.employeeForm.value.basicSalary!
-    );
-    this.newEmployee.status = this.employeeForm.value.status!;
-    this.newEmployee.group = this.employeeForm.value.group!;
-    this.newEmployee.description = new Date(
-      this.employeeForm.value.description as Date
-    )
-      .toISOString()
-      .toString();
+    this.newEmployee = {
+      username: this.employeeForm.value.username!,
+      firstName: this.employeeForm.value.firstName!,
+      lastName: this.employeeForm.value.lastName!,
+      email: this.employeeForm.value.email!,
+      birthDate: this.employeeForm.value.birthDate as Date,
+      basicSalary:parseInt(
+        this.employeeForm.value.basicSalary!
+      ),
+      status: this.employeeForm.value.status!,
+      group: this.employeeForm.value.group!,
+      description: this.employeeForm.value.description as Date
+    }
 
+    console.log("New Data:", this.newEmployee)
     EMPLOYEES.push(this.newEmployee);
     this.handleSuccess();
   }
