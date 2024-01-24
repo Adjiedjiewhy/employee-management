@@ -3,7 +3,7 @@ import { EMPLOYEES } from '../data/constants';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NewEmployeeData } from '../data/types';
+import { Employees } from '../data/types';
 
 @Component({
   selector: 'app-list',
@@ -21,7 +21,7 @@ export class ListComponent {
   };
 
   employees = EMPLOYEES;
-  currentPageData = [] as NewEmployeeData[];
+  currentPageData = [] as Employees[];
   itemPerPage = 10;
   currentPage = 0;
   totalPages = 0;
@@ -74,22 +74,22 @@ export class ListComponent {
     this.totalPages = Math.ceil(this.employees.length / this.itemPerPage);
   }
 
-  handleSearch(tempData: NewEmployeeData[]) {
-    return tempData.filter((employee: NewEmployeeData) => {
+  handleSearch(tempData: Employees[]) {
+    return tempData.filter((employee: Employees) => {
       return Object.values(employee).some((value) =>
         String(value).toLowerCase().includes(this.searchQuery)
       );
     });
   }
 
-  handleStatusFilter(tempData: NewEmployeeData[]) {
-    return tempData.filter((employee: NewEmployeeData) => {
+  handleStatusFilter(tempData: Employees[]) {
+    return tempData.filter((employee: Employees) => {
       return employee.status.toLowerCase() === this.statusSelect;
     });
   }
 
-  handleGroupFilter(tempData: NewEmployeeData[]) {
-    return tempData.filter((employee: NewEmployeeData) => {
+  handleGroupFilter(tempData: Employees[]) {
+    return tempData.filter((employee: Employees) => {
       return employee.group.toLowerCase() === this.groupSelect;
     });
   }
@@ -115,7 +115,7 @@ export class ListComponent {
     );
   }
 
-  handleGoToDetails(employeeData: NewEmployeeData) {
+  handleGoToDetails(employeeData: Employees) {
     this.router.navigateByUrl('/details', {
       state: {
         employeeData: employeeData,

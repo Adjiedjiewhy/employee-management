@@ -1,6 +1,6 @@
-import { NewEmployeeData } from "../data/types"
+import { Employees } from "../data/types"
 
-export const EMPLOYEES: NewEmployeeData[] = [
+export const EMPLOYEES: Employees[] = [
   {
     firstName: 'Simone',
     lastName: 'Dietrich',

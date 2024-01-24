@@ -4,7 +4,7 @@ export interface ModalMessage {
     message: string;
 }
 
-export interface NewEmployeeData {
+export interface Employees {
     firstName: string,
     lastName: string,
     username: string,
