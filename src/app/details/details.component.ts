@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
+import { NewEmployeeData } from '../data/types';
 
 @Component({
   selector: 'app-details',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
   styleUrl: './details.component.css',
 })
 export class DetailsComponent {
-  employee: any;
+  employee = {} as NewEmployeeData;
 
   constructor(private router: Router) {}
 

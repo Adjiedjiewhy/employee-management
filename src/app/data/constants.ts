@@ -15,7 +15,7 @@ export const EMPLOYEES: NewEmployeeData[] = [
   {
     firstName: 'Lucie',
     lastName: 'Schultz',
-    username: 'Lucie-SchultZ',
+    username: 'Lucie-Schultz',
     email: 'Reyes_Lueilwitz30@gmail.com',
     birthDate: new Date('2001-01-19T16:14:10.646Z'),
     basicSalary: 7025452.558,

@@ -10,7 +10,7 @@ export interface NewEmployeeData {
     username: string,
     email: string,
     birthDate: Date,
-    basicSalary: Number,
+    basicSalary: number,
     status: string,
     group: string,
     description: Date,

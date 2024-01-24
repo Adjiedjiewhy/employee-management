@@ -3,6 +3,7 @@ import { EMPLOYEES } from '../data/constants';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { NewEmployeeData } from '../data/types';
 
 @Component({
   selector: 'app-list',
@@ -20,7 +21,7 @@ export class ListComponent {
   };
 
   employees = EMPLOYEES;
-  currentPageData: any;
+  currentPageData = [] as NewEmployeeData[];
   itemPerPage = 10;
   currentPage = 0;
   totalPages = 0;
@@ -73,22 +74,22 @@ export class ListComponent {
     this.totalPages = Math.ceil(this.employees.length / this.itemPerPage);
   }
 
-  handleSearch(tempData: any) {
-    return tempData.filter((employee: any) => {
+  handleSearch(tempData: NewEmployeeData[]) {
+    return tempData.filter((employee: NewEmployeeData) => {
       return Object.values(employee).some((value) =>
         String(value).toLowerCase().includes(this.searchQuery)
       );
     });
   }
 
-  handleStatusFilter(tempData: any) {
-    return tempData.filter((employee: any) => {
+  handleStatusFilter(tempData: NewEmployeeData[]) {
+    return tempData.filter((employee: NewEmployeeData) => {
       return employee.status.toLowerCase() === this.statusSelect;
     });
   }
 
-  handleGroupFilter(tempData: any) {
-    return tempData.filter((employee: any) => {
+  handleGroupFilter(tempData: NewEmployeeData[]) {
+    return tempData.filter((employee: NewEmployeeData) => {
       return employee.group.toLowerCase() === this.groupSelect;
     });
   }
@@ -114,7 +115,7 @@ export class ListComponent {
     );
   }
 
-  handleGoToDetails(employeeData: object) {
+  handleGoToDetails(employeeData: NewEmployeeData) {
     this.router.navigateByUrl('/details', {
       state: {
         employeeData: employeeData,
