@@ -7,6 +7,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -26,7 +27,8 @@ export class HomeComponent {
     password: ['', Validators.required],
   });
 
-  constructor(private router: Router, private formBuilder: FormBuilder) {}
+  constructor(private router: Router, private formBuilder: FormBuilder, private user: UserService) {
+  }
 
   handleLogin() {
     if (this.loginForm.invalid) {
@@ -40,6 +42,7 @@ export class HomeComponent {
       this.handleInvalidData();
       return;
     }
+    this.user.setCurrentUser("admin", "admin")
     this.router.navigateByUrl('/list');
   }
 
