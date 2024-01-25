@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { DetailsComponent } from './details/details.component';
 import { ListComponent } from './list/list.component';
 import { NewComponent } from './new/new.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 export const routes: Routes = [
     {
@@ -13,17 +14,20 @@ export const routes: Routes = [
     {
         path: "list",
         component: ListComponent,
-        title: "Employee Management / List"
+        title: "Employee Management / List",
+        canActivate: [AuthGuardService]
     },
     {
         path: "details",
         component: DetailsComponent,
-        title: "Employee Management / Details"
+        title: "Employee Management / Details",
+        canActivate: [AuthGuardService]
     },
     {
         path: "new",
         component: NewComponent,
-        title: "Employee Management / Add New"
+        title: "Employee Management / Add New",
+        canActivate: [AuthGuardService]
     }
 ];
 

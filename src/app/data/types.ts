@@ -15,3 +15,8 @@ export interface Employees {
     group: string,
     description: Date,
 }
+
+export interface User{
+    username: string,
+    password: string
+}
