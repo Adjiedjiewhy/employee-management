@@ -8,30 +8,26 @@ import { FormsModule } from '@angular/forms';
   standalone: true,
   imports: [ButtonMainComponent, CommonModule, FormsModule],
   templateUrl: './pagination-controls.component.html',
-  styleUrl: './pagination-controls.component.css'
+  styleUrl: './pagination-controls.component.css',
 })
 export class PaginationControlsComponent {
+  @Input() currentPage: number | undefined;
+  @Input() totalPages: number | undefined;
+  @Input() itemPerPage: number | undefined;
+
   @Output() clickEventL = new EventEmitter();
   @Output() clickEventR = new EventEmitter();
   @Output() selectEvent = new EventEmitter();
 
-  @Input() currentPage: number | undefined; 
-  @Input() totalPages: number | undefined; 
-  @Input() itemPerPage: number | undefined; 
-
-  ngOnInit(){
-    console.log(this.itemPerPage)
-  }
-
-  clickMethodL(): void{
+  clickMethodL(): void {
     this.clickEventL.emit();
   }
 
-  clickMethodR(): void{
+  clickMethodR(): void {
     this.clickEventR.emit();
   }
 
-  selectMethod(): void{
-    this.selectEvent.emit();
+  selectMethod(): void {
+    this.selectEvent.emit(this.itemPerPage);
   }
 }

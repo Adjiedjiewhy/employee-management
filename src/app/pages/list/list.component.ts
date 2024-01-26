@@ -28,9 +28,9 @@ export class ListComponent {
   currentPage = 0;
   totalPages = 0;
 
-  searchQuery = '';
-  statusSelect = '';
-  groupSelect = '';
+  searchQuery: string | undefined;
+  statusSelect: string | undefined;
+  groupSelect: string | undefined;
 
   constructor(private router: Router) {}
 
@@ -41,15 +41,14 @@ export class ListComponent {
       this.groupSelect = history.state.filters[2];
     }
 
-    this.handleChangeItemsPerPage();
+    this.handleChangeItemsPerPage(undefined);
   }
 
-  test(){
-    this.itemPerPage = 5;
-    this.handleChangeItemsPerPage()
-  }
 
-  handleChangeItemsPerPage() {
+  handleChangeItemsPerPage($event: number | undefined) {
+    if($event !== undefined){
+      this.itemPerPage = $event;
+    }
     console.log("CHANGE!")
     this.totalPages = Math.ceil(EMPLOYEES.length / this.itemPerPage);
     this.currentPage = 1;
@@ -86,7 +85,7 @@ export class ListComponent {
   handleSearch(tempData: Employees[]) {
     return tempData.filter((employee: Employees) => {
       return Object.values(employee).some((value) =>
-        String(value).toLowerCase().includes(this.searchQuery)
+        String(value).toLowerCase().includes(this.searchQuery!)
       );
     });
   }
