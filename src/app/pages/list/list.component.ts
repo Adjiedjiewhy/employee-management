@@ -44,6 +44,11 @@ export class ListComponent {
     this.handleChangeItemsPerPage();
   }
 
+  test(){
+    this.itemPerPage = 5;
+    this.handleChangeItemsPerPage()
+  }
+
   handleChangeItemsPerPage() {
     console.log("CHANGE!")
     this.totalPages = Math.ceil(EMPLOYEES.length / this.itemPerPage);
