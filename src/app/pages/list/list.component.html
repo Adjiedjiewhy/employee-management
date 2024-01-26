@@ -46,6 +46,14 @@
         </button>
       </div>
     </div>
+    <app-pagination-controls
+      [currentPage]="currentPage"
+      [totalPages]="totalPages"
+      [itemPerPage]="itemPerPage"
+      (clickEventL)="handlePrevPage()"
+      (clickEventR)="handleNextPage()"
+      (selectEvent)="handleChangeItemsPerPage()"
+    ></app-pagination-controls>
     <div class="flex items-center justify-between mt-4">
       <div>
         <button

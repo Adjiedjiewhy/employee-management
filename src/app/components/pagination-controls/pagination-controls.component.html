@@ -1,0 +1,27 @@
+<div class="flex items-center justify-between mt-4">
+  <div>
+    <app-button-main
+      (click)="clickMethodL()"
+      [btnText]="'Prev'"
+      [btnType]="'default'"
+    ></app-button-main>
+
+    <span class="mx-2"> Page {{ currentPage }} of {{ totalPages }} </span>
+
+    <app-button-main
+      (click)="clickMethodR()"
+      [btnText]="'Next'"
+      [btnType]="'default'"
+    ></app-button-main>
+  </div>
+
+  <div>
+    <label class="mr-2">Items per page:</label>
+    <select [(ngModel)]="itemPerPage" (change)="selectMethod()">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="20">20</option>
+      <option value="25">25</option>
+    </select>
+  </div>
+</div>

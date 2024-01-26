@@ -4,7 +4,7 @@ export const STYLES_BUTTONS: Styles[] = [
   {
     key: 'default',
     stylings:
-      'rounded-md text-sm font-medium px-4 py-2 bg-black text-white flex items-center justify-center',
+      'rounded-md text-sm font-medium px-4 py-2 bg-black text-white items-center justify-center transition duration-300 ease-in-out hover:bg-blue-400',
   },
   {
     key: 'main',

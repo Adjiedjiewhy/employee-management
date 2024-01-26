@@ -5,11 +5,12 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Employees } from '../../data/types';
 import { TableActionsComponent } from '../../components/table-actions/table-actions.component';
+import { PaginationControlsComponent } from '../../components/pagination-controls/pagination-controls.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, TableActionsComponent],
+  imports: [CommonModule, FormsModule, TableActionsComponent, PaginationControlsComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
@@ -44,12 +45,14 @@ export class ListComponent {
   }
 
   handleChangeItemsPerPage() {
+    console.log("CHANGE!")
     this.totalPages = Math.ceil(EMPLOYEES.length / this.itemPerPage);
     this.currentPage = 1;
     this.adjustTableData();
   }
 
   adjustTableData() {
+    console.log("ADJUST TABLE")
     this.currentPage = 1;
     let tempData = EMPLOYEES;
     if (this.searchQuery || this.statusSelect || this.groupSelect) {
