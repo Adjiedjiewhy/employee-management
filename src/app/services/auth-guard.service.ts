@@ -1,16 +1,18 @@
 import { ActivatedRouteSnapshot, CanActivateFn, RouterStateSnapshot } from "@angular/router";
-import { Injectable, inject } from "@angular/core";
+import { inject } from "@angular/core";
 import { UserService } from "./user.service";
+import { Router } from '@angular/router';
 
 export const AuthGuardService: CanActivateFn = (route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean =>{
         const user: UserService = inject(UserService);
-        let test = user.getCurrentUser();
+        const router: Router = inject(Router)
 
-        if(test.username === "admin" && test.password === "admin"){
+        if(user.isCurrentUserEmpty()){
             return true;
         }
         else{
+            router.navigateByUrl("");
             return false;
         }
 }

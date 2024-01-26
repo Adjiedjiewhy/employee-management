@@ -1,21 +1,24 @@
-import { Injectable } from "@angular/core";
 import { User } from "../data/types";
-
 export class UserService{
     currentUser = {} as User;
 
-    setCurrentUser(username: string, password: string){
+    setCurrentUser(username: string, password: string): void{
         this.currentUser = {
             username: username,
             password: password
         }
     }
 
-    getCurrentUser(){
+    getCurrentUser(): User{
         return this.currentUser;
     }
 
-    resetUser(){
+    isCurrentUserEmpty(): boolean{
+        console.log("User:", this.currentUser);
+        return this.currentUser.username !== undefined && this.currentUser.password !== undefined
+    }
+
+    resetUser(): void{
         this.currentUser = {} as User;
     }
 
