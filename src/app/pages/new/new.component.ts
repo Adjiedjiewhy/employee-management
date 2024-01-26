@@ -9,7 +9,7 @@ import {
   FormControl,
 } from '@angular/forms';
 import { EMPLOYEES } from '../../data/constants';
-import { ModalMessage, Employees } from '../../data/types';
+import { ModalMessage, Employee } from '../../data/types';
 import { DatePipe } from '@angular/common';
 import { ButtonMainComponent } from '../../components/button-main/button-main.component';
 
@@ -40,7 +40,7 @@ export class NewComponent {
     description: [new Date(), Validators.required],
   });
 
-  newEmployee: Employees = {
+  newEmployee: Employee = {
     firstName: '',
     lastName: '',
     username: '',

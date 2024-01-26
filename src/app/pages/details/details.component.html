@@ -27,38 +27,26 @@
         </svg>
         <p class="px-2 text-sm">{{ employee.email }}</p>
       </div>
-      <div class="mt-5 text-black">
-        <h3 class="text-lg font-semibold">Username</h3>
-        <ul class="mt-2 text-sm space-y-1">
-          {{
-            employee.username
-          }}
-        </ul>
-      </div>
-      <div class="mt-5 text-black">
-        <h3 class="text-lg font-semibold">Birthdate</h3>
-        <ul class="mt-2 text-sm space-y-1">
-          {{
-            employee.birthDate | date
-          }}
-        </ul>
-      </div>
-      <div class="mt-5 text-black">
-        <h3 class="text-lg font-semibold">Salary</h3>
-        <ul class="mt-2 text-sm space-y-2">
-          {{
-            employee.basicSalary | currency : "IDR" : "symbol-narrow"
-          }}
-        </ul>
-      </div>
-      <div class="mt-5 text-black">
-        <h3 class="text-lg font-semibold">Description</h3>
-        <ul class="mt-2 text-sm space-y-2">
-          {{
-            employee.description | date
-          }}
-        </ul>
-      </div>
+      <app-employee-data-text
+        [detailLabel]="'Username'"
+        [detailInfo]="employee.username"
+        [detailType]="'text'"
+      />
+      <app-employee-data-text
+        [detailLabel]="'Birthdate'"
+        [detailInfo]="employee.birthDate"
+        [detailType]="'date'"
+      />
+      <app-employee-data-text
+        [detailLabel]="'Salary'"
+        [detailInfo]="employee.basicSalary"
+        [detailType]="'currency'"
+      />
+      <app-employee-data-text
+        [detailLabel]="'Description'"
+        [detailInfo]="employee.description"
+        [detailType]="'date'"
+      />
       <app-button-main
         (click)="handleBack()"
         [btnText]="'OK'"

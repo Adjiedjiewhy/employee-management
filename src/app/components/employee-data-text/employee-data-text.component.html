@@ -1,0 +1,14 @@
+<div class="mt-5 text-black">
+  <h3 class="text-lg font-semibold">{{ detailLabel }}</h3>
+  <ul class="mt-2 text-sm space-y-2">
+    <p *ngIf="detailType === 'text'">
+      {{ detailInfo }}
+    </p>
+    <p *ngIf="detailType === 'date'">
+      {{ detailInfo | date }}
+    </p>
+    <p *ngIf="detailType === 'currency'">
+      {{ detailInfo | currency : "IDR" : "symbol-narrow" }}
+    </p>
+  </ul>
+</div>

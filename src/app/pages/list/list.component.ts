@@ -3,7 +3,7 @@ import { EMPLOYEES } from '../../data/constants';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Employees } from '../../data/types';
+import { Employee } from '../../data/types';
 import { TableActionsComponent } from '../../components/table-actions/table-actions.component';
 import { PaginationControlsComponent } from '../../components/pagination-controls/pagination-controls.component';
 import { ButtonMainComponent } from '../../components/button-main/button-main.component';
@@ -24,7 +24,7 @@ export class ListComponent {
   };
 
   employees = EMPLOYEES;
-  currentPageData = [] as Employees[];
+  currentPageData = [] as Employee[];
   itemPerPage = 10;
   currentPage = 0;
   totalPages = 0;
@@ -81,22 +81,22 @@ export class ListComponent {
     this.totalPages = Math.ceil(this.employees.length / this.itemPerPage);
   }
 
-  handleSearch(tempData: Employees[]) {
-    return tempData.filter((employee: Employees) => {
+  handleSearch(tempData: Employee[]) {
+    return tempData.filter((employee: Employee) => {
       return Object.values(employee).some((value) =>
         String(value).toLowerCase().includes(this.searchQuery!)
       );
     });
   }
 
-  handleStatusFilter(tempData: Employees[]) {
-    return tempData.filter((employee: Employees) => {
+  handleStatusFilter(tempData: Employee[]) {
+    return tempData.filter((employee: Employee) => {
       return employee.status.toLowerCase() === this.statusSelect;
     });
   }
 
-  handleGroupFilter(tempData: Employees[]) {
-    return tempData.filter((employee: Employees) => {
+  handleGroupFilter(tempData: Employee[]) {
+    return tempData.filter((employee: Employee) => {
       return employee.group.toLowerCase() === this.groupSelect;
     });
   }
@@ -122,7 +122,7 @@ export class ListComponent {
     );
   }
 
-  handleGoToDetails(employeeData: Employees) {
+  handleGoToDetails(employeeData: Employee) {
     this.router.navigateByUrl('/details', {
       state: {
         employeeData: employeeData,

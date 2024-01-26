@@ -18,22 +18,22 @@ export class ButtonMainComponent {
       case 'main':
         this.styling = STYLES_BUTTONS.find(
           (style) => style['key'] === 'main'
-        )?.stylings;
+        )?.styles;
         break;
       case 'warning':
         this.styling = STYLES_BUTTONS.find(
           (style) => style['key'] === 'warning'
-        )?.stylings;
+        )?.styles;
         break;
       case 'danger':
         this.styling = STYLES_BUTTONS.find(
           (style) => style['key'] === 'danger'
-        )?.stylings;
+        )?.styles;
         break;
       default:
         this.styling = STYLES_BUTTONS.find(
           (style) => style['key'] === 'default'
-        )?.stylings;
+        )?.styles;
     }
   }
 }

@@ -1,29 +1,48 @@
-import { Employees, Styles } from '../data/types';
+import { Employee, Styling, Dropdown } from '../data/types';
 
-export const STYLES_BUTTONS: Styles[] = [
+export const STYLES_BUTTONS: Styling[] = [
   {
     key: 'default',
-    stylings:
+    styles:
       'rounded-md text-sm font-medium px-4 py-2 bg-black text-white items-center justify-center transition duration-300 ease-in-out hover:bg-blue-400',
   },
   {
     key: 'main',
-    stylings:
+    styles:
       'rounded-md text-sm font-medium px-4 py-2 my-5 w-full h-full bg-black text-white flex items-center justify-center transition duration-300 ease-in-out hover:bg-blue-400',
   },
   {
     key: 'warning',
-    stylings:
+    styles:
       'rounded-md text-sm font-medium px-4 py-2 bg-yellow-400 text-white items-center justify-center transition duration-300 ease-in-out hover:bg-yellow-600',
   },
   {
     key: 'danger',
-    stylings:
+    styles:
       'rounded-md text-sm font-medium px-4 py-2 bg-red-400 text-white items-center justify-center transition duration-300 ease-in-out hover:bg-red-600',
-  }
+  },
 ];
 
-export const EMPLOYEES: Employees[] = [
+export const DROPDOWNS_STATUS: Dropdown[] = [
+  { value: 'permanent', text: 'Permanent' },
+  { value: 'contract', text: 'Contract' },
+  { value: 'outsource', text: 'Outsource' },
+];
+
+export const DROPDOWNS_GROUP: Dropdown[] = [
+  { value: 'business', text: 'Business' },
+  { value: 'human resource', text: 'Human Resource' },
+  { value: 'information technology', text: 'Information Technology' },
+  { value: 'operations', text: 'Operations' },
+  { value: 'sales', text: 'Sales' },
+  { value: 'security', text: 'Security' },
+  { value: 'legal', text: 'Legal' },
+  { value: 'risk', text: 'Risk' },
+  { value: 'finance', text: 'Finance' },
+  { value: 'support', text: 'Support' },
+];
+
+export const EMPLOYEES: Employee[] = [
   {
     firstName: 'Simone',
     lastName: 'Dietrich',

@@ -4,7 +4,7 @@ export interface ModalMessage {
     message: string;
 }
 
-export interface Employees {
+export interface Employee {
     firstName: string,
     lastName: string,
     username: string,
@@ -21,7 +21,12 @@ export interface User{
     password: string
 }
 
-export interface Styles{
+export interface Styling{
     key: string,
-    stylings: string
+    styles: string
+}
+
+export interface Dropdown{
+    value: string,
+    text: string
 }

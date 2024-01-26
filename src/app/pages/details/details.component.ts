@@ -1,18 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { Employees } from '../../data/types';
+import { Employee } from '../../data/types';
 import { ButtonMainComponent } from '../../components/button-main/button-main.component';
+import { EmployeeDataTextComponent } from '../../components/employee-data-text/employee-data-text.component';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [CommonModule, ButtonMainComponent],
+  imports: [CommonModule, ButtonMainComponent, EmployeeDataTextComponent],
   templateUrl: './details.component.html',
   styleUrl: './details.component.css',
 })
 export class DetailsComponent {
-  employee = {} as Employees;
+  employee = {} as Employee;
 
   constructor(private router: Router) {}
 
