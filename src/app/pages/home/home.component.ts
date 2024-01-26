@@ -7,12 +7,13 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { UserService } from '../services/user.service';
+import { UserService } from '../../services/user.service';
+import { ButtonMainComponent } from '../../components/button-main/button-main.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, ButtonMainComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -31,6 +32,7 @@ export class HomeComponent {
   }
 
   handleLogin() {
+    console.log("Login")
     if (this.loginForm.invalid) {
       this.handleNoData();
       return;
@@ -67,5 +69,9 @@ export class HomeComponent {
 
   toggleModalOff() {
     this.isModalVisible = false;
+  }
+
+  myCallbackFunction = (args: any): void => {
+    console.log("Callback!")
   }
 }

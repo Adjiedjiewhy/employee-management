@@ -1,4 +1,27 @@
-import { Employees } from "../data/types"
+import { Employees, Styles } from '../data/types';
+
+export const STYLES_BUTTONS: Styles[] = [
+  {
+    key: 'default',
+    stylings:
+      'rounded-md text-sm font-medium px-4 py-2 bg-black text-white flex items-center justify-center',
+  },
+  {
+    key: 'main',
+    stylings:
+      'rounded-md text-sm font-medium px-4 py-2 my-5 w-full h-full bg-black text-white flex items-center justify-center transition duration-300 ease-in-out hover:bg-blue-400',
+  },
+  {
+    key: 'warning',
+    stylings:
+      'rounded-md text-sm font-medium px-4 py-2 bg-yellow-400 text-white items-center justify-center transition duration-300 ease-in-out hover:bg-yellow-600',
+  },
+  {
+    key: 'danger',
+    stylings:
+      'rounded-md text-sm font-medium px-4 py-2 bg-red-400 text-white items-center justify-center transition duration-300 ease-in-out hover:bg-red-600',
+  }
+];
 
 export const EMPLOYEES: Employees[] = [
   {

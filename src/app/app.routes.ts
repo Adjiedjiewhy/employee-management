@@ -1,8 +1,8 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { DetailsComponent } from './details/details.component';
-import { ListComponent } from './list/list.component';
-import { NewComponent } from './new/new.component';
+import { HomeComponent } from './pages/home/home.component';
+import { DetailsComponent } from './pages/details/details.component';
+import { ListComponent } from './pages/list/list.component';
+import { NewComponent } from './pages/new/new.component';
 import { AuthGuardService } from './services/auth-guard.service';
 
 export const routes: Routes = [
@@ -13,21 +13,22 @@ export const routes: Routes = [
     },
     {
         path: "list",
-        component: ListComponent,
         title: "Employee Management / List",
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        loadComponent: () => import('./pages/list/list.component').then((m) => m.ListComponent)
     },
     {
         path: "details",
-        component: DetailsComponent,
         title: "Employee Management / Details",
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        loadComponent: () => import('./pages/details/details.component').then((m) => m.DetailsComponent)
     },
     {
         path: "new",
-        component: NewComponent,
         title: "Employee Management / Add New",
-        canActivate: [AuthGuardService]
+        canActivate: [AuthGuardService],
+        loadComponent: () => import('./pages/new/new.component').then((m) => m.NewComponent)
+
     }
 ];
 

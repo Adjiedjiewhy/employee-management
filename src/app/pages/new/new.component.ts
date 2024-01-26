@@ -8,8 +8,8 @@ import {
   ReactiveFormsModule,
   FormControl,
 } from '@angular/forms';
-import { EMPLOYEES } from '../data/constants';
-import { ModalMessage, Employees } from '../data/types';
+import { EMPLOYEES } from '../../data/constants';
+import { ModalMessage, Employees } from '../../data/types';
 import { DatePipe } from '@angular/common';
 
 @Component({

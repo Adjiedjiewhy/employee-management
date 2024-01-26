@@ -1,14 +1,15 @@
 import { Component } from '@angular/core';
-import { EMPLOYEES } from '../data/constants';
+import { EMPLOYEES } from '../../data/constants';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Employees } from '../data/types';
+import { Employees } from '../../data/types';
+import { TableActionsComponent } from '../../components/table-actions/table-actions.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, TableActionsComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
