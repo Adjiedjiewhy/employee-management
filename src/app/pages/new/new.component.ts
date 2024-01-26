@@ -11,11 +11,12 @@ import {
 import { EMPLOYEES } from '../../data/constants';
 import { ModalMessage, Employees } from '../../data/types';
 import { DatePipe } from '@angular/common';
+import { ButtonMainComponent } from '../../components/button-main/button-main.component';
 
 @Component({
   selector: 'app-new',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, ButtonMainComponent],
   templateUrl: './new.component.html',
   styleUrl: './new.component.css',
 })
@@ -59,12 +60,10 @@ export class NewComponent {
 
   handleSubmit() {
     if (this.employeeForm.invalid) {
-      console.log('Invalid!');
       this.handleNoData();
       return;
     }
     if(!this.validEmailFormat.test(this.employeeForm.value.email!)){
-      console.log('Invalid!');
       this.handleInvalidEmail();
       return;
     }
@@ -83,7 +82,6 @@ export class NewComponent {
       description: this.employeeForm.value.description as Date
     }
 
-    console.log("New Data:", this.newEmployee)
     EMPLOYEES.push(this.newEmployee);
     this.handleSuccess();
   }

@@ -14,7 +14,6 @@ export class UserService{
     }
 
     isCurrentUserEmpty(): boolean{
-        console.log("User:", this.currentUser);
         return this.currentUser.username !== undefined && this.currentUser.password !== undefined
     }
 

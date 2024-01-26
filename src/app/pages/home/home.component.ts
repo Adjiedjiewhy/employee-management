@@ -32,7 +32,6 @@ export class HomeComponent {
   }
 
   handleLogin() {
-    console.log("Login")
     if (this.loginForm.invalid) {
       this.handleNoData();
       return;
@@ -61,7 +60,6 @@ export class HomeComponent {
   }
 
   handleForgot() {
-    console.log('Do Forgot!');
     this.isModalVisible = true;
     this.modalMsg.title = 'Forgot Password';
     this.modalMsg.message = '[Username: admin] [Password: admin]';
@@ -69,9 +67,5 @@ export class HomeComponent {
 
   toggleModalOff() {
     this.isModalVisible = false;
-  }
-
-  myCallbackFunction = (args: any): void => {
-    console.log("Callback!")
   }
 }

@@ -38,12 +38,11 @@
         </select>
       </div>
       <div>
-        <button
+        <app-button-main
           (click)="handleGoToNewEmployee()"
-          class="rounded-md text-sm font-medium px-4 py-2 bg-black text-white items-center justify-center transition duration-300 ease-in-out hover:bg-blue-400"
-        >
-          Add New Employee
-        </button>
+          [btnText]="'Add New Employee'"
+          [btnType]="'main'"
+        ></app-button-main>
       </div>
     </div>
     <app-pagination-controls

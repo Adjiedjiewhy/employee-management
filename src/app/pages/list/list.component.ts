@@ -6,11 +6,12 @@ import { Router } from '@angular/router';
 import { Employees } from '../../data/types';
 import { TableActionsComponent } from '../../components/table-actions/table-actions.component';
 import { PaginationControlsComponent } from '../../components/pagination-controls/pagination-controls.component';
+import { ButtonMainComponent } from '../../components/button-main/button-main.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, TableActionsComponent, PaginationControlsComponent],
+  imports: [CommonModule, FormsModule, TableActionsComponent, PaginationControlsComponent, ButtonMainComponent],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
@@ -49,14 +50,12 @@ export class ListComponent {
     if($event !== undefined){
       this.itemPerPage = $event;
     }
-    console.log("CHANGE!")
     this.totalPages = Math.ceil(EMPLOYEES.length / this.itemPerPage);
     this.currentPage = 1;
     this.adjustTableData();
   }
 
   adjustTableData() {
-    console.log("ADJUST TABLE")
     this.currentPage = 1;
     let tempData = EMPLOYEES;
     if (this.searchQuery || this.statusSelect || this.groupSelect) {
@@ -137,7 +136,6 @@ export class ListComponent {
   }
 
   handleEdit() {
-    console.log('Do Edit');
     this.isModalVisible = true;
     this.isAction = true;
     this.modalMsg.title = 'Editing Employee Data';
@@ -145,7 +143,6 @@ export class ListComponent {
   }
 
   handleDelete() {
-    console.log('Do Delete');
     this.isModalVisible = true;
     this.isAction = false;
     this.modalMsg.title = 'Deleting Employee Data';
