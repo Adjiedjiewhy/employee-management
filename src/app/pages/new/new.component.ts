@@ -12,11 +12,12 @@ import { EMPLOYEES } from '../../data/constants';
 import { ModalMessage, Employee } from '../../data/types';
 import { DatePipe } from '@angular/common';
 import { ButtonMainComponent } from '../../components/button-main/button-main.component';
+import { InputMainComponent } from '../../components/input-main/input-main.component';
 
 @Component({
   selector: 'app-new',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ButtonMainComponent],
+  imports: [CommonModule, ReactiveFormsModule, ButtonMainComponent, InputMainComponent],
   templateUrl: './new.component.html',
   styleUrl: './new.component.css',
 })
