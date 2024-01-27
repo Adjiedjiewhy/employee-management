@@ -13,6 +13,7 @@ export class InputMainComponent {
   @Input() parentForm!: FormGroup;
   @Input() controlName!: string;
   @Input() inputType!: string;
+  @Input() labelText!: string;
 
   handleInputString(event: any) {
     this.parentForm.controls[this.controlName].setValue(event.target.value);

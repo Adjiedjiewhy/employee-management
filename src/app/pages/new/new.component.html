@@ -4,66 +4,36 @@
   <div class="w-full max-w-2xl bg-white rounded-lg shadow-md">
     <form class="p-6" [formGroup]="employeeForm" (submit)="handleSubmit()">
       <div class="space-y-4">
-        <div class="space-y-2">
-          <label
-            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            for="email"
-          >
-            Username
-          </label>
-          <app-input-main
-            [parentForm]="employeeForm"
-            [controlName]="'username'"
-          />
-          <!-- <input
-            formControlName="username"
-            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            required=""
-            type="email"
-          /> -->
-        </div>
+        <app-input-main
+          [parentForm]="employeeForm"
+          [controlName]="'username'"
+          [labelText]="'Username'"
+          [inputType]="'text'"
+        />
         <div class="flex">
-          <div class="w-full">
-            <label
-              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              for="name"
-            >
-              First Name
-            </label>
-            <input
-              formControlName="firstName"
-              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              required=""
+          <div class="w-full mr-1">
+            <app-input-main
+              [parentForm]="employeeForm"
+              [controlName]="'firstName'"
+              [labelText]="'First Name'"
+              [inputType]="'text'"
             />
           </div>
-          <div class="ml-4 w-full">
-            <label
-              class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-              for="name"
-            >
-              Last Name
-            </label>
-            <input
-              formControlName="lastName"
-              class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-              required=""
+          <div class="w-full ml-1">
+            <app-input-main
+              [parentForm]="employeeForm"
+              [controlName]="'lastName'"
+              [labelText]="'Last Name'"
+              [inputType]="'text'"
             />
           </div>
         </div>
-        <div class="space-y-2">
-          <label
-            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            for="phone"
-          >
-            E-mail
-          </label>
-          <input
-            formControlName="email"
-            type="email"
-            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            required=""
-          />
-        </div>
+        <app-input-main
+          [parentForm]="employeeForm"
+          [controlName]="'email'"
+          [labelText]="'E-mail'"
+          [inputType]="'email'"
+        />
         <div class="space-y-2">
           <label
             class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -79,20 +49,12 @@
             required=""
           />
         </div>
-        <div class="space-y-2">
-          <label
-            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            for="position"
-          >
-            Basic Salary
-          </label>
-          <input
-            formControlName="basicSalary"
-            type="number"
-            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            required=""
-          />
-        </div>
+        <app-input-main
+          [parentForm]="employeeForm"
+          [controlName]="'basicSalary'"
+          [labelText]="'Basic Salary'"
+          [inputType]="'number'"
+        />
         <div class="flex">
           <div class="w-full">
             <label
@@ -140,20 +102,12 @@
             </select>
           </div>
         </div>
-        <div class="space-y-2">
-          <label
-            class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-            for="position"
-          >
-            Description
-          </label>
-          <input
-            formControlName="description"
-            type="date"
-            class="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-            required=""
-          />
-        </div>
+        <app-input-main
+          [parentForm]="employeeForm"
+          [controlName]="'description'"
+          [labelText]="'Description'"
+          [inputType]="'date'"
+        />
       </div>
       <div class="flex">
         <button
