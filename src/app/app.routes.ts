@@ -26,7 +26,7 @@ export const routes: Routes = [
     {
         path: "new",
         title: "Employee Management / Add New",
-        canActivate: [AuthGuardService],
+        // canActivate: [AuthGuardService],
         loadComponent: () => import('./pages/new/new.component').then((m) => m.NewComponent)
 
     }
