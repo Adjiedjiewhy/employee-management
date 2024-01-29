@@ -12,6 +12,7 @@ import { TableActionsComponent } from '../../components/table-actions/table-acti
 import { PaginationControlsComponent } from '../../components/pagination-controls/pagination-controls.component';
 import { ButtonMainComponent } from '../../components/button-main/button-main.component';
 import { AlertComponent } from '../../components/alert/alert.component';
+import { TableService } from '../../services/table.service';
 
 @Component({
   selector: 'app-list',
@@ -32,7 +33,7 @@ export class ListComponent {
   isAction = true;
   modalContent!: ModalContent;
 
-  employees = EMPLOYEES;
+  employees = [...EMPLOYEES];
   groups = DROPDOWNS_GROUP;
   statuses = DROPDOWNS_STATUS;
 
@@ -45,9 +46,12 @@ export class ListComponent {
   statusSelect: string = '';
   groupSelect: string = '';
 
-  currentlySorted: string | undefined;
+  sortingInfo = {
+    column: '',
+    sortType: '',
+  };
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private tableService: TableService) {}
 
   ngOnInit() {
     if (history.state.filters !== undefined) {
@@ -69,8 +73,12 @@ export class ListComponent {
   }
 
   adjustTableData() {
+    this.sortingInfo = {
+      column: '',
+      sortType: '',
+    };
     this.currentPage = 1;
-    let tempData = EMPLOYEES;
+    let tempData = [...EMPLOYEES];
     if (this.searchQuery || this.statusSelect || this.groupSelect) {
       if (this.searchQuery) {
         tempData = this.handleSearch(tempData);
@@ -81,9 +89,9 @@ export class ListComponent {
       if (this.groupSelect && this.groupSelect !== 'any') {
         tempData = this.handleGroupFilter(tempData);
       }
-      this.employees = tempData;
-    } else {
-      this.employees = EMPLOYEES;
+      this.employees = [...tempData];
+    } else if (this.sortingInfo.column === '') {
+      this.employees = [...EMPLOYEES];
     }
 
     this.adjustPagination();
@@ -114,12 +122,35 @@ export class ListComponent {
     });
   }
 
-  handleSorting(columnName: string): void{
-    console.log("Sort ", columnName)
+  handleSorting(columnName: string): void {
+    this.manageSortingInfo(columnName);
+    let sortedData = this.tableService.doSortData(
+      this.employees,
+      this.sortingInfo
+    );
+    if (sortedData !== null) {
+      this.employees = [...sortedData];
+      this.adjustPagination();
+      this.handlePageData();
+    } else {
+      this.adjustTableData();
+    }
   }
 
-  manageSorting(): void{
-
+  manageSortingInfo(columnName: string): void {
+    if (
+      this.sortingInfo.column === '' ||
+      this.sortingInfo.column !== columnName
+    ) {
+      this.sortingInfo = {
+        column: columnName,
+        sortType: 'asc',
+      };
+    } else if (this.sortingInfo.column === columnName) {
+      this.sortingInfo.sortType === 'asc'
+        ? (this.sortingInfo.sortType = 'desc')
+        : (this.sortingInfo = { column: '', sortType: '' });
+    }
   }
 
   handleNextPage() {

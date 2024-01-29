@@ -16,10 +16,6 @@ export class AlertComponent {
 
   @Output() buttonEvent = new EventEmitter();
 
-  ngOnInit() {
-    console.log('Content:', this.modalContent);
-  }
-
   clickMethod() {
     this.buttonEvent.emit();
   }

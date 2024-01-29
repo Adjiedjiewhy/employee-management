@@ -49,12 +49,71 @@
     <table class="w-full table-auto">
       <thead>
         <tr>
-          <th class="px-4 py-2" (click)="handleSorting('no')">No.</th>
-          <th class="px-4 py-2" (click)="handleSorting('username')">Username</th>
-          <th class="px-4 py-2" (click)="handleSorting('email')">E-mail</th>
-          <th class="px-4 py-2" (click)="handleSorting('birthdate')">Birthdate</th>
-          <th class="px-4 py-2" (click)="handleSorting('status')">Status</th>
-          <th class="px-4 py-2" (click)="handleSorting('group')">Group</th>
+          <th class="px-4 py-2">No.</th>
+          <th
+            class="px-4 py-2"
+            (click)="handleSorting('username')"
+            [class.bg-blue-400]="
+              sortingInfo.column === 'username' &&
+              sortingInfo.sortType === 'asc'
+            "
+            [class.bg-red-400]="
+              sortingInfo.column === 'username' &&
+              sortingInfo.sortType === 'desc'
+            "
+          >
+            Username
+          </th>
+          <th
+            class="px-4 py-2"
+            (click)="handleSorting('email')"
+            [class.bg-blue-400]="
+              sortingInfo.column === 'email' && sortingInfo.sortType === 'asc'
+            "
+            [class.bg-red-400]="
+              sortingInfo.column === 'email' && sortingInfo.sortType === 'desc'
+            "
+          >
+            E-mail
+          </th>
+          <th
+            class="px-4 py-2"
+            (click)="handleSorting('birthDate')"
+            [class.bg-blue-400]="
+              sortingInfo.column === 'birthDate' &&
+              sortingInfo.sortType === 'asc'
+            "
+            [class.bg-red-400]="
+              sortingInfo.column === 'birthDate' &&
+              sortingInfo.sortType === 'desc'
+            "
+          >
+            Birthdate
+          </th>
+          <th
+            class="px-4 py-2"
+            (click)="handleSorting('status')"
+            [class.bg-blue-400]="
+              sortingInfo.column === 'status' && sortingInfo.sortType === 'asc'
+            "
+            [class.bg-red-400]="
+              sortingInfo.column === 'status' && sortingInfo.sortType === 'desc'
+            "
+          >
+            Status
+          </th>
+          <th
+            class="px-4 py-2"
+            (click)="handleSorting('group')"
+            [class.bg-blue-400]="
+              sortingInfo.column === 'group' && sortingInfo.sortType === 'asc'
+            "
+            [class.bg-red-400]="
+              sortingInfo.column === 'group' && sortingInfo.sortType === 'desc'
+            "
+          >
+            Group
+          </th>
           <th class="px-4 py-2">Action</th>
         </tr>
       </thead>
