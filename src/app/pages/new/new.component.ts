@@ -9,25 +9,23 @@ import {
   FormControl,
 } from '@angular/forms';
 import { EMPLOYEES } from '../../data/constants';
-import { ModalMessage, Employee } from '../../data/types';
+import { ModalContent, Employee, StyleTypes } from '../../data/types';
 import { DatePipe } from '@angular/common';
 import { ButtonMainComponent } from '../../components/button-main/button-main.component';
 import { InputMainComponent } from '../../components/input-main/input-main.component';
+import { AlertComponent } from '../../components/alert/alert.component';
 
 @Component({
   selector: 'app-new',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ButtonMainComponent, InputMainComponent],
+  imports: [CommonModule, ReactiveFormsModule, ButtonMainComponent, InputMainComponent, AlertComponent],
   templateUrl: './new.component.html',
   styleUrl: './new.component.css',
 })
 export class NewComponent {
   validEmailFormat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   isModalVisible = false;
-  modalMsg: ModalMessage = {
-    title: "",
-    message: ""
-  };
+  modalMsg!: ModalContent;
 
   employeeForm = this.formBuilder.group({
     username: ['', Validators.required],

@@ -1,7 +1,13 @@
-
-export interface ModalMessage {
+export enum StyleTypes {
+    default = "DEFAULT",
+    warning = "WARNING",
+    danger = "DANGER"
+}
+export interface ModalContent {
     title: string;
     message: string;
+    buttonTxt: string;
+    modalType: StyleTypes;
 }
 
 export interface Employee {

@@ -3,25 +3,30 @@ import { EMPLOYEES } from '../../data/constants';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Employee } from '../../data/types';
+import { ModalContent, Employee, StyleTypes } from '../../data/types';
 import { TableActionsComponent } from '../../components/table-actions/table-actions.component';
 import { PaginationControlsComponent } from '../../components/pagination-controls/pagination-controls.component';
 import { ButtonMainComponent } from '../../components/button-main/button-main.component';
+import { AlertComponent } from '../../components/alert/alert.component';
 
 @Component({
   selector: 'app-list',
   standalone: true,
-  imports: [CommonModule, FormsModule, TableActionsComponent, PaginationControlsComponent, ButtonMainComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    TableActionsComponent,
+    PaginationControlsComponent,
+    ButtonMainComponent,
+    AlertComponent,
+  ],
   templateUrl: './list.component.html',
   styleUrl: './list.component.css',
 })
 export class ListComponent {
   isModalVisible = false;
   isAction = true;
-  modalMsg = {
-    title: 'Default Title',
-    message: 'Default Message',
-  };
+  modalMsg!: ModalContent;
 
   employees = EMPLOYEES;
   currentPageData = [] as Employee[];
@@ -45,9 +50,8 @@ export class ListComponent {
     this.handleChangeItemsPerPage(undefined);
   }
 
-
   handleChangeItemsPerPage($event: number | undefined) {
-    if($event !== undefined){
+    if ($event !== undefined) {
       this.itemPerPage = $event;
     }
     this.totalPages = Math.ceil(EMPLOYEES.length / this.itemPerPage);
@@ -138,15 +142,25 @@ export class ListComponent {
   handleEdit() {
     this.isModalVisible = true;
     this.isAction = true;
-    this.modalMsg.title = 'Editing Employee Data';
-    this.modalMsg.message = 'Currently editing employee details!';
+
+    this.modalMsg = {
+      title: 'Editing Employee Data',
+      message: 'Currently editing employee details!',
+      buttonTxt: 'OK',
+      modalType: StyleTypes.warning,
+    };
   }
 
   handleDelete() {
     this.isModalVisible = true;
     this.isAction = false;
-    this.modalMsg.title = 'Deleting Employee Data';
-    this.modalMsg.message = 'Employee deletion in progress!';
+
+    this.modalMsg = {
+      title: 'Deleting Employee Data',
+      message: 'Employee deletion in progress!',
+      buttonTxt: 'OK',
+      modalType: StyleTypes.danger,
+    };
   }
 
   toggleModalOff() {

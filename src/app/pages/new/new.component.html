@@ -146,4 +146,9 @@
       </div>
     </div>
   </div>
+  <app-alert
+    [modalContent]="modalMsg"
+    [modalVisibility]="isModalVisible"
+    (buttonEvent)="toggleModalOff()"
+  ></app-alert>
 </main>
