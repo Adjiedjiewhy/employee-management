@@ -10,7 +10,6 @@ import {
 } from '@angular/forms';
 import { EMPLOYEES } from '../../data/constants';
 import { ModalContent, Employee, StyleTypes } from '../../data/types';
-import { DatePipe } from '@angular/common';
 import { ButtonMainComponent } from '../../components/button-main/button-main.component';
 import { InputMainComponent } from '../../components/input-main/input-main.component';
 import { AlertComponent } from '../../components/alert/alert.component';
@@ -25,7 +24,7 @@ import { AlertComponent } from '../../components/alert/alert.component';
 export class NewComponent {
   validEmailFormat = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
   isModalVisible = false;
-  modalMsg!: ModalContent;
+  modalContent!: ModalContent;
 
   employeeForm = this.formBuilder.group({
     username: ['', Validators.required],
@@ -91,21 +90,36 @@ export class NewComponent {
 
   handleSuccess(){
     this.isModalVisible = true;
-    this.modalMsg.title = 'Success';
-    this.modalMsg.message = 'New employee data has been added to the database!';
+
+    this.modalContent = {
+      title: 'Success',
+      message: 'New employee data has been added to the database!',
+      buttonTxt: 'OK',
+      modalType: StyleTypes.default,
+    };
     this.employeeForm.reset();
   }
 
   handleNoData() {
     this.isModalVisible = true;
-    this.modalMsg.title = 'Missing Information';
-    this.modalMsg.message = 'Please fill out all the inputs!';
+
+    this.modalContent = {
+      title: 'Missing Information',
+      message: 'Please fill out all the inputs!',
+      buttonTxt: 'OK',
+      modalType: StyleTypes.default,
+    };
   }
 
   handleInvalidEmail() {
     this.isModalVisible = true;
-    this.modalMsg.title = 'Invalid E-mail';
-    this.modalMsg.message = 'Please input a valid email address!';
+
+    this.modalContent = {
+      title: 'Invalid E-mail',
+      message: 'Please input a valid email address!',
+      buttonTxt: 'OK',
+      modalType: StyleTypes.default,
+    };
   }
 
   toggleModalOff() {

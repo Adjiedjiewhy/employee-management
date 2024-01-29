@@ -26,7 +26,7 @@ import { AlertComponent } from '../../components/alert/alert.component';
 })
 export class HomeComponent {
   isModalVisible = false;
-  modalMsg!: ModalContent;
+  modalContent!: ModalContent;
 
   loginForm = this.formBuilder.group({
     username: ['', Validators.required],
@@ -58,7 +58,7 @@ export class HomeComponent {
   handleNoData() {
     this.isModalVisible = true;
 
-    this.modalMsg = {
+    this.modalContent = {
       title: 'Missing Login Details',
       message: 'Please input in your login details!',
       buttonTxt: 'OK',
@@ -69,7 +69,7 @@ export class HomeComponent {
   handleInvalidData() {
     this.isModalVisible = true;
 
-    this.modalMsg = {
+    this.modalContent = {
       title: 'Invalid Login Details',
       message: 'Please input the appropriate login details!',
       buttonTxt: 'OK',
@@ -80,7 +80,7 @@ export class HomeComponent {
   handleForgot() {
     this.isModalVisible = true;
 
-    this.modalMsg = {
+    this.modalContent = {
       title: 'Forgot Password',
       message: '[Username: admin] [Password: admin]',
       buttonTxt: 'OK',

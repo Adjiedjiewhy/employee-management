@@ -26,7 +26,7 @@ import { AlertComponent } from '../../components/alert/alert.component';
 export class ListComponent {
   isModalVisible = false;
   isAction = true;
-  modalMsg!: ModalContent;
+  modalContent!: ModalContent;
 
   employees = EMPLOYEES;
   currentPageData = [] as Employee[];
@@ -143,7 +143,7 @@ export class ListComponent {
     this.isModalVisible = true;
     this.isAction = true;
 
-    this.modalMsg = {
+    this.modalContent = {
       title: 'Editing Employee Data',
       message: 'Currently editing employee details!',
       buttonTxt: 'OK',
@@ -155,7 +155,7 @@ export class ListComponent {
     this.isModalVisible = true;
     this.isAction = false;
 
-    this.modalMsg = {
+    this.modalContent = {
       title: 'Deleting Employee Data',
       message: 'Employee deletion in progress!',
       buttonTxt: 'OK',
