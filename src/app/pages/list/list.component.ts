@@ -45,6 +45,8 @@ export class ListComponent {
   statusSelect: string = '';
   groupSelect: string = '';
 
+  currentlySorted: string | undefined;
+
   constructor(private router: Router) {}
 
   ngOnInit() {
@@ -106,10 +108,18 @@ export class ListComponent {
     });
   }
 
-  handleGroupFilter(tempData: Employee[]) {
+  handleGroupFilter(tempData: Employee[]): Employee[] {
     return tempData.filter((employee: Employee) => {
       return employee.group.toLowerCase() === this.groupSelect.toLowerCase();
     });
+  }
+
+  handleSorting(columnName: string): void{
+    console.log("Sort ", columnName)
+  }
+
+  manageSorting(): void{
+
   }
 
   handleNextPage() {
