@@ -8,7 +8,11 @@ import {
   ReactiveFormsModule,
   FormControl,
 } from '@angular/forms';
-import { EMPLOYEES } from '../../data/constants';
+import {
+  EMPLOYEES,
+  DROPDOWNS_STATUS,
+  DROPDOWNS_GROUP,
+} from '../../data/constants';
 import { ModalContent, Employee, StyleTypes } from '../../data/types';
 import { ButtonMainComponent } from '../../components/button-main/button-main.component';
 import { InputMainComponent } from '../../components/input-main/input-main.component';
@@ -17,7 +21,13 @@ import { AlertComponent } from '../../components/alert/alert.component';
 @Component({
   selector: 'app-new',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, ButtonMainComponent, InputMainComponent, AlertComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    ButtonMainComponent,
+    InputMainComponent,
+    AlertComponent,
+  ],
   templateUrl: './new.component.html',
   styleUrl: './new.component.css',
 })
@@ -48,8 +58,11 @@ export class NewComponent {
     status: '',
     group: '',
     description: new Date(),
-  }
+  };
   maxDate?: string;
+
+  groups = DROPDOWNS_GROUP;
+  statuses = DROPDOWNS_STATUS;
 
   constructor(private router: Router, private formBuilder: FormBuilder) {
     const today = new Date();
@@ -61,7 +74,7 @@ export class NewComponent {
       this.handleNoData();
       return;
     }
-    if(!this.validEmailFormat.test(this.employeeForm.value.email!)){
+    if (!this.validEmailFormat.test(this.employeeForm.value.email!)) {
       this.handleInvalidEmail();
       return;
     }
@@ -72,13 +85,11 @@ export class NewComponent {
       lastName: this.employeeForm.value.lastName!,
       email: this.employeeForm.value.email!,
       birthDate: this.employeeForm.value.birthDate as Date,
-      basicSalary:parseInt(
-        this.employeeForm.value.basicSalary!
-      ),
+      basicSalary: parseInt(this.employeeForm.value.basicSalary!),
       status: this.employeeForm.value.status!,
       group: this.employeeForm.value.group!,
-      description: this.employeeForm.value.description as Date
-    }
+      description: this.employeeForm.value.description as Date,
+    };
 
     EMPLOYEES.push(this.newEmployee);
     this.handleSuccess();
@@ -88,7 +99,7 @@ export class NewComponent {
     this.router.navigateByUrl('/list');
   }
 
-  handleSuccess(){
+  handleSuccess() {
     this.isModalVisible = true;
 
     this.modalContent = {

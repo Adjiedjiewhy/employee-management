@@ -69,9 +69,9 @@
               required=""
             >
               <option value="" disabled selected>Select an option</option>
-              <option value="Permanent">Permanent</option>
-              <option value="Contract">Contract</option>
-              <option value="Outsource">Outsource</option>
+              @for (status of statuses; let index = $index; track index){
+              <option value="status.value">{{ status.text }}</option>
+              }
             </select>
           </div>
           <div class="ml-4 w-full">
@@ -87,18 +87,9 @@
               required=""
             >
               <option value="" disabled selected>Select an option</option>
-              <option value="Business">Business</option>
-              <option value="Human Resource">Human Resource</option>
-              <option value="Information Technology">
-                Information Technology
-              </option>
-              <option value="Operations">Operations</option>
-              <option value="Sales">Sales</option>
-              <option value="Security">Security</option>
-              <option value="Legal">Legal</option>
-              <option value="Risk">Risk</option>
-              <option value="Finance">Finance</option>
-              <option value="Support">Support</option>
+              @for (group of groups; let index = $index; track index){
+              <option value="group.value">{{ group.text }}</option>
+              }
             </select>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { EMPLOYEES } from '../../data/constants';
+import { EMPLOYEES, DROPDOWNS_STATUS, DROPDOWNS_GROUP } from '../../data/constants';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -29,14 +29,17 @@ export class ListComponent {
   modalContent!: ModalContent;
 
   employees = EMPLOYEES;
+  groups = DROPDOWNS_GROUP;
+  statuses = DROPDOWNS_STATUS;
+
   currentPageData = [] as Employee[];
   itemPerPage = 10;
   currentPage = 0;
   totalPages = 0;
 
-  searchQuery: string | undefined;
-  statusSelect: string | undefined;
-  groupSelect: string | undefined;
+  searchQuery: string = '';
+  statusSelect: string = '';
+  groupSelect: string = '';
 
   constructor(private router: Router) {}
 
