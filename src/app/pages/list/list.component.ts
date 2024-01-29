@@ -123,6 +123,7 @@ export class ListComponent {
   }
 
   handleSorting(columnName: string): void {
+    this.currentPage = 1;
     this.manageSortingInfo(columnName);
     let sortedData = this.tableService.doSortData(
       this.employees,
