@@ -16,15 +16,17 @@
         <label class="mr-2">Status</label>
         <select (change)="adjustTableData()" [(ngModel)]="statusSelect">
           <option value="" disabled selected>Select an option</option>
+          <option value="any">Any</option>
           @for (status of statuses; let index = $index; track index){
-          <option value="status.value">{{ status.text }}</option>
+          <option value="{{ status }}">{{ status }}</option>
           }
         </select>
         <label class="mr-2 mx-4">Group</label>
         <select (change)="adjustTableData()" [(ngModel)]="groupSelect">
           <option value="" disabled selected>Select an option</option>
+          <option value="any">Any</option>
           @for (group of groups; let index = $index; track index){
-          <option value="group.value">{{ group.text }}</option>
+          <option value="{{ group }}">{{ group }}</option>
           }
         </select>
       </div>

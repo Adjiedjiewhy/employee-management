@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
-import { EMPLOYEES, DROPDOWNS_STATUS, DROPDOWNS_GROUP } from '../../data/constants';
+import {
+  EMPLOYEES,
+  DROPDOWNS_STATUS,
+  DROPDOWNS_GROUP,
+} from '../../data/constants';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -91,20 +95,20 @@ export class ListComponent {
   handleSearch(tempData: Employee[]) {
     return tempData.filter((employee: Employee) => {
       return Object.values(employee).some((value) =>
-        String(value).toLowerCase().includes(this.searchQuery!)
+        String(value).toLowerCase().includes(this.searchQuery!.toLowerCase())
       );
     });
   }
 
   handleStatusFilter(tempData: Employee[]) {
     return tempData.filter((employee: Employee) => {
-      return employee.status.toLowerCase() === this.statusSelect;
+      return employee.status.toLowerCase() === this.statusSelect.toLowerCase();
     });
   }
 
   handleGroupFilter(tempData: Employee[]) {
     return tempData.filter((employee: Employee) => {
-      return employee.group.toLowerCase() === this.groupSelect;
+      return employee.group.toLowerCase() === this.groupSelect.toLowerCase();
     });
   }
 

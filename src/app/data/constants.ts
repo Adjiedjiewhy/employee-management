@@ -1,4 +1,4 @@
-import { Employee, Styling, Dropdown } from '../data/types';
+import { Employee, Styling } from '../data/types';
 
 export const STYLES_BUTTONS: Styling[] = [
   {
@@ -23,23 +23,23 @@ export const STYLES_BUTTONS: Styling[] = [
   },
 ];
 
-export const DROPDOWNS_STATUS: Dropdown[] = [
-  { value: 'permanent', text: 'Permanent' },
-  { value: 'contract', text: 'Contract' },
-  { value: 'outsource', text: 'Outsource' },
+export const DROPDOWNS_STATUS: String[] = [
+  'Permanent',
+  'Contract',
+  'Outsource'
 ];
 
-export const DROPDOWNS_GROUP: Dropdown[] = [
-  { value: 'business', text: 'Business' },
-  { value: 'human resource', text: 'Human Resource' },
-  { value: 'information technology', text: 'Information Technology' },
-  { value: 'operations', text: 'Operations' },
-  { value: 'sales', text: 'Sales' },
-  { value: 'security', text: 'Security' },
-  { value: 'legal', text: 'Legal' },
-  { value: 'risk', text: 'Risk' },
-  { value: 'finance', text: 'Finance' },
-  { value: 'support', text: 'Support' },
+export const DROPDOWNS_GROUP: string[] = [
+  'Business',
+  'Human Resource',
+  'Information Technology',
+  'Operations',
+  'Sales',
+  'Security',
+  'Legal',
+  'Risk',
+  'Finance',
+  'Support',
 ];
 
 export const EMPLOYEES: Employee[] = [

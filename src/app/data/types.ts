@@ -31,8 +31,3 @@ export interface Styling{
     key: string,
     styles: string
 }
-
-export interface Dropdown{
-    value: string,
-    text: string
-}

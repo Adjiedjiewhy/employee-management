@@ -2,7 +2,7 @@
   class="flex flex-col items-center justify-center p-6 bg-gradient-to-r from-purple-400 to-blue-400 flex-grow min-h-screen"
 >
   <div class="w-full max-w-2xl bg-white rounded-lg shadow-md">
-    <form class="p-6" [formGroup]="employeeForm" (submit)="handleSubmit()">
+    <form class="p-6" [formGroup]="employeeForm">
       <div class="space-y-4">
         <app-input-main
           [parentForm]="employeeForm"
@@ -70,7 +70,7 @@
             >
               <option value="" disabled selected>Select an option</option>
               @for (status of statuses; let index = $index; track index){
-              <option value="status.value">{{ status.text }}</option>
+              <option value={{status}}>{{ status }}</option>
               }
             </select>
           </div>
@@ -88,7 +88,7 @@
             >
               <option value="" disabled selected>Select an option</option>
               @for (group of groups; let index = $index; track index){
-              <option value="group.value">{{ group.text }}</option>
+              <option value={{group}}>{{ group }}</option>
               }
             </select>
           </div>
@@ -101,18 +101,16 @@
         />
       </div>
       <div class="flex">
-        <button
-          type="submit"
-          class="w-full h-full mx-1 rounded-md text-sm font-medium px-4 py-2 my-3 bg-black text-white flex items-center justify-center transition duration-300 ease-in-out hover:bg-blue-400"
-        >
-          Save
-        </button>
-        <button
+        <app-button-main
+          (click)="handleSubmit()"
+          [btnText]="'Save'"
+          [btnType]="'default'"
+        ></app-button-main>
+        <app-button-main
           (click)="handleBack()"
-          class="w-full h-full mx-1 rounded-md text-sm font-medium px-4 py-2 my-3 bg-black text-white flex items-center justify-center transition duration-300 ease-in-out hover:bg-red-400"
-        >
-          Cancel
-        </button>
+          [btnText]="'Cancel'"
+          [btnType]="'default'"
+        ></app-button-main>
       </div>
     </form>
   </div>
