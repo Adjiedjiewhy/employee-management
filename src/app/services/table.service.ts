@@ -9,10 +9,16 @@ export class TableService {
   doFilterData() {}
 
   doSortData(data: any[], sortingInfo: any): any[] | null {
-    return this.sortString(data, sortingInfo)
+    switch (typeof sortingInfo) {
+      case 'object':
+        return this.sortDate(data, sortingInfo);
+      case 'string':
+      default:
+        return this.sortString(data, sortingInfo);
+    }
   }
 
-  sortString(data: any[], sortingInfo: any){
+  sortString(data: any[], sortingInfo: any) {
     switch (sortingInfo.sortType) {
       case 'asc': {
         return data.sort((a, b) =>
@@ -24,7 +30,25 @@ export class TableService {
           b[sortingInfo.column].localeCompare(a[sortingInfo.column])
         );
       }
-      default: return null;
+      default:
+        return null;
+    }
+  }
+
+  sortDate(data: any[], sortingInfo: any) {
+    switch (sortingInfo.sortType) {
+      case 'asc': {
+        return data.sort(
+          (a, b) => a.birthDate.getTime() - b.birthDate.getTime()
+        );
+      }
+      case 'desc': {
+        return data.sort(
+          (a, b) => b.birthDate.getTime() - a.birthDate.getTime()
+        );
+      }
+      default:
+        return null;
     }
   }
 }
