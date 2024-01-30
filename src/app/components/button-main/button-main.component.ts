@@ -20,6 +20,11 @@ export class ButtonMainComponent {
           (style) => style['key'] === 'main'
         )?.styles;
         break;
+      case 'main-red':
+        this.styling = STYLES_BUTTONS.find(
+          (style) => style['key'] === 'main-red'
+        )?.styles;
+        break;
       case 'warning':
         this.styling = STYLES_BUTTONS.find(
           (style) => style['key'] === 'warning'

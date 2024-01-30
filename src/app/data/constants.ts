@@ -12,6 +12,11 @@ export const STYLES_BUTTONS: Styling[] = [
       'rounded-md text-sm font-medium px-4 py-2 my-5 w-full h-full bg-black text-white flex items-center justify-center transition duration-300 ease-in-out hover:bg-blue-400',
   },
   {
+    key: 'main-red',
+    styles:
+      'rounded-md text-sm font-medium px-4 py-2 my-5 w-full h-full bg-black text-white flex items-center justify-center transition duration-300 ease-in-out hover:bg-red-400',
+  },
+  {
     key: 'warning',
     styles:
       'rounded-md text-sm font-medium px-4 py-2 bg-yellow-400 text-white items-center justify-center transition duration-300 ease-in-out hover:bg-yellow-600',
