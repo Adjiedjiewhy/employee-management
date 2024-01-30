@@ -12,7 +12,7 @@ export const AuthGuardService: CanActivateFn = (route: ActivatedRouteSnapshot,
             return true;
         }
         else{
-            // router.navigateByUrl("");
-            return true;
+            router.navigateByUrl("");
+            return false;
         }
 }
