@@ -18,7 +18,7 @@ export class UserService{
         return this.currentUser;
     }
 
-    isCurrentUserEmpty(): boolean{
+    isUserLoggedIn(): boolean{
         return this.currentUser.username !== undefined && this.currentUser.password !== undefined
     }
 
