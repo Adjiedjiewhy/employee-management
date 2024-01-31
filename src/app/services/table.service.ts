@@ -9,11 +9,13 @@ export class TableService {
   doFilterData() {}
 
   doSortData(data: any[], sortingInfo: any): any[] | null {
-    switch (typeof sortingInfo) {
-      case 'object':
+    switch (sortingInfo.column) {
+      case 'birthDate':
+        console.log("Object");
         return this.sortDate(data, sortingInfo);
       case 'string':
       default:
+        console.log("String");
         return this.sortString(data, sortingInfo);
     }
   }
